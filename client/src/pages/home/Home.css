@@ -1,0 +1,170 @@
+.home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-section {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 60px 30px;
+    margin: 20px 0 40px;
+    text-align: center;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/public/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 30px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .cta-button.primary {
+    background-color: #4a90e2;
+    color: white;
+  }
+
+  .cta-button.primary:hover {
+    background-color: #3a7bc8;
+  }
+
+  .cta-button.secondary {
+    background-color: white;
+    color: #4a90e2;
+    border: 2px solid #4a90e2;
+  }
+
+  .cta-button.secondary:hover {
+    background-color: #f0f7ff;
+  }
+
+  .features-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 60px 20px;
+  }
+
+  .feature {
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+
+  .feature:hover {
+    transform: translateY(-5px);
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+
+  .feature h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .feature p {
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .about-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 40px;
+    margin: 40px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .about-section h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .about-section p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .learn-more {
+    display: inline-block;
+    color: #4a90e2;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .learn-more:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 40px 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+
+    .hero-content p {
+      font-size: 1rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .features-section {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  :root {
+    --bodega-cat-image: url('../../assets/bodegaCat.png');
+  }
+
+  .hero-section {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 60px 30px;
+    margin: 20px 0 40px;
+    text-align: center;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), var(--bodega-cat-image);
+    background-size: cover;
+    background-position: center;
+  }
+
