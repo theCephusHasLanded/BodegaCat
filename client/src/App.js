@@ -6,12 +6,12 @@ import Home from './pages/home/Home';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Profile from './pages/profile/Profile';
+import About from './pages/about/About';
 import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
-// Placeholder components for now
+// Placeholder component for now
 const Cats = () => <div className="container"><h1>Bodega Cats</h1></div>;
-const About = () => <div className="container"><h1>About Us</h1></div>;
 
 function App() {
   return (
