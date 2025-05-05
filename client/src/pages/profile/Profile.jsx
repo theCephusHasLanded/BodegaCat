@@ -1,56 +1,73 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import './Profile.css';
 
 const Profile = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
+  const [userData, setUserData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    username: ''
+  });
+
+  useEffect(() => {
+    if (currentUser) {
+      // In a real app, you would fetch the complete user profile from the API
+      setUserData({
+        firstName: currentUser.firstName || '',
+        lastName: currentUser.lastName || '',
+        email: currentUser.email || '',
+        username: currentUser.username || ''
+      });
+    }
+  }, [currentUser]);
+
+  const handleLogout = () => {
+    logout();
+    // Redirect will happen automatically via ProtectedRoute
+  };
 
   if (!currentUser) {
-    return <div className="loading">Loading user data...</div>;
+    return <div>Loading...</div>;
   }
 
   return (
     <div className="profile-container">
       <div className="profile-card">
         <div className="profile-header">
-          <div className="profile-avatar">
-            {currentUser.username.charAt(0).toUpperCase()}
-          </div>
-          <h1>{currentUser.username}</h1>
-          <p className="profile-email">{currentUser.email}</p>
+          <h2>User Profile</h2>
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
 
-        <div className="profile-details">
-          <div className="profile-section">
-            <h2>Account Details</h2>
-            <div className="profile-info">
-              <div className="profile-info-item">
-                <span className="label">Username:</span>
-                <span className="value">{currentUser.username}</span>
-              </div>
-              <div className="profile-info-item">
-                <span className="label">Email:</span>
-                <span className="value">{currentUser.email}</span>
-              </div>
-              <div className="profile-info-item">
-                <span className="label">Role:</span>
-                <span className="value">{currentUser.role || 'User'}</span>
-              </div>
-              <div className="profile-info-item">
-                <span className="label">Member Since:</span>
-                <span className="value">
-                  {currentUser.createdAt
-                    ? new Date(currentUser.createdAt).toLocaleDateString()
-                    : 'N/A'}
-                </span>
-              </div>
+        <div className="profile-info">
+          <div className="info-group">
+            <label>Username</label>
+            <p>{userData.username}</p>
+          </div>
+
+          <div className="info-group">
+            <label>Email</label>
+            <p>{userData.email}</p>
+          </div>
+
+          <div className="info-row">
+            <div className="info-group">
+              <label>First Name</label>
+              <p>{userData.firstName || 'Not provided'}</p>
+            </div>
+
+            <div className="info-group">
+              <label>Last Name</label>
+              <p>{userData.lastName || 'Not provided'}</p>
             </div>
           </div>
         </div>
 
         <div className="profile-actions">
-          <button className="profile-button edit-button">Edit Profile</button>
-          <button className="profile-button password-button">Change Password</button>
+          <button className="edit-button">Edit Profile</button>
         </div>
       </div>
     </div>

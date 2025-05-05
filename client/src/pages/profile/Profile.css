@@ -1,125 +1,105 @@
 .profile-container {
-    display: flex;
-    justify-content: center;
-    padding: 40px 20px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  padding: 20px;
+  background-color: #f8f9fa;
+}
 
-  .profile-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 700px;
-    overflow: hidden;
-  }
+.profile-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+}
 
-  .profile-header {
-    background-color: #f5f7fa;
-    padding: 30px;
-    text-align: center;
-    border-bottom: 1px solid #eaeaea;
-  }
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
+}
 
-  .profile-avatar {
-    width: 100px;
-    height: 100px;
-    background-color: #4a90e2;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    font-weight: bold;
-    margin: 0 auto 20px;
-  }
+.profile-header h2 {
+  color: #333;
+  margin: 0;
+}
 
-  .profile-header h1 {
-    margin: 0 0 10px;
-    color: #333;
-  }
+.logout-button {
+  background-color: transparent;
+  color: #d32f2f;
+  border: 1px solid #d32f2f;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
 
-  .profile-email {
-    color: #666;
-    margin: 0;
-  }
+.logout-button:hover {
+  background-color: #d32f2f;
+  color: white;
+}
 
-  .profile-details {
-    padding: 30px;
-  }
+.profile-info {
+  margin-bottom: 24px;
+}
 
-  .profile-section {
-    margin-bottom: 30px;
-  }
+.info-group {
+  margin-bottom: 16px;
+}
 
-  .profile-section h2 {
-    color: #333;
-    margin-top: 0;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eaeaea;
-  }
+.info-group label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 4px;
+}
 
-  .profile-info {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
+.info-group p {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+  padding: 8px 0;
+}
 
-  @media (min-width: 576px) {
-    .profile-info {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
+.info-row {
+  display: flex;
+  gap: 20px;
+}
 
-  .profile-info-item {
-    display: flex;
+.info-row .info-group {
+  flex: 1;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+
+.edit-button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+  background-color: #3a7bc8;
+}
+
+@media (max-width: 576px) {
+  .info-row {
     flex-direction: column;
+    gap: 0;
   }
-
-  .profile-info-item .label {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 5px;
-  }
-
-  .profile-info-item .value {
-    font-size: 16px;
-    color: #333;
-    font-weight: 500;
-  }
-
-  .profile-actions {
-    padding: 0 30px 30px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-
-  .profile-button {
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    font-size: 14px;
-  }
-
-  .edit-button {
-    background-color: #4a90e2;
-    color: white;
-  }
-
-  .edit-button:hover {
-    background-color: #3a7bc8;
-  }
-
-  .password-button {
-    background-color: #f5f5f5;
-    color: #555;
-  }
-
-  .password-button:hover {
-    background-color: #e0e0e0;
-  }
+}
