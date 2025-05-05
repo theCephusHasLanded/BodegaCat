@@ -6,15 +6,13 @@ const ProtectedRoute = ({ children }) => {
   const { currentUser, loading } = useAuth();
 
   if (loading) {
-    return <div className="loading">purring...</div>;
+    return <div>Loading...</div>;
   }
 
-  // Redirect to login if not authenticated
   if (!currentUser) {
     return <Navigate to="/login" />;
   }
 
-  // Render children if authenticated
   return children;
 };
 
