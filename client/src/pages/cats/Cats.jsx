@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../../context/AuthContext';
+// Remove the useAuth import if you're not using currentUser
+// import { useAuth } from '../../context/AuthContext';
 import './Cats.css';
 
 const Cats = () => {
-  const { currentUser } = useAuth();
+  // Remove the currentUser declaration if not used
+  // const { currentUser } = useAuth();
   const [cats, setCats] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -52,6 +54,7 @@ const Cats = () => {
 
     fetchCats();
   }, []);
+
 
   if (loading) {
     return (

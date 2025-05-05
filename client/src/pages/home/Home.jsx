@@ -1,67 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
-import './Home.css';
-import bodegaCatImage from '../../assets/bodegaCat.png'; // Import the image
+import './Home.css'; 
 
 const Home = () => {
-  const { currentUser } = useAuth();
-
   return (
     <div className="home-container">
       <div className="hero-section">
         <div className="hero-content">
           <h1>Welcome to Bodega Cat</h1>
-          <p>Support your local bodega cats and help them find forever homes.</p>
-
-          {currentUser ? (
-            <Link to="/cats" className="cta-button">
-              Browse Cats
-            </Link>
-          ) : (
-            <div className="cta-buttons">
-              <Link to="/login" className="cta-button secondary">
-                Login
-              </Link>
-              <Link to="/register" className="cta-button primary">
-                Sign Up
-              </Link>
-            </div>
-          )}
+          <p>Celebrating the beloved feline guardians of New York City's corner stores.</p>
+          <div className="hero-buttons">
+            <Link to="/cats" className="primary-button">Meet the Cats</Link>
+            <Link to="/about" className="secondary-button">Learn More</Link>
+          </div>
         </div>
       </div>
 
       <div className="features-section">
-        <div className="feature">
-          <div className="feature-icon">🐱</div>
-          <h2>Meet the Cats</h2>
-          <p>Browse our collection of adorable bodega cats looking for support and homes.</p>
-        </div>
-
-        <div className="feature">
-          <div className="feature-icon">💰</div>
-          <h2>Donate</h2>
-          <p>Contribute to the well-being of these furry friends with one-time or recurring donations.</p>
-        </div>
-
-        <div className="feature">
-          <div className="feature-icon">🏠</div>
-          <h2>Adopt</h2>
-          <p>Give a bodega cat a forever home and make a new best friend.</p>
+        <div className="container">
+          <h2>Why Bodega Cats Matter</h2>
+          <div className="features-grid">
+            <div className="feature-card">
+              <div className="feature-icon">🏪</div>
+              <h3>Store Guardians</h3>
+              <p>Bodega cats keep stores free of pests and bring good fortune to their owners.</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon">❤️</div>
+              <h3>Community Mascots</h3>
+              <p>These cats become beloved fixtures in their neighborhoods, known by locals.</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon">📸</div>
+              <h3>Instagram Famous</h3>
+              <p>Many bodega cats have their own social media followings and fan clubs.</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="about-section">
-        <h2>About Bodega Cats</h2>
-        <p>
-          Bodega cats are the beloved feline residents of neighborhood corner stores,
-          delis, and bodegas across urban areas. They help keep the stores free of pests
-          and bring joy to customers. Our mission is to support these working cats and
-          help them find loving homes when they're ready to retire from bodega life.
-        </p>
-        <Link to="/about" className="learn-more">
-          Learn More About Our Mission
-        </Link>
+      <div className="cta-section">
+        <div className="container">
+          <h2>Join Our Community</h2>
+          <p>Sign up to share your favorite bodega cat sightings and stories.</p>
+          <Link to="/register" className="cta-button">Sign Up Now</Link>
+        </div>
       </div>
     </div>
   );
