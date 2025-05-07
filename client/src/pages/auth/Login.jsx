@@ -1,38 +1,45 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import './Auth.css';
+import './Login.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const { login, loading } = useAuth();
+
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
 
     if (!username || !password) {
-      setError('Please fill in all fields');
+      setError('Please enter both username and password');
       return;
     }
 
-    const success = await login(username, password);
-    if (success) {
-      navigate('/');
+    try {
+      setError('');
+      setLoading(true);
+      await login(username, password);
+      navigate('/profile');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to login. Please check your credentials.');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="auth-container">
-      <div className="auth-form-container">
-        <h2>Login to Your Account 🐾</h2>
+      <div className="auth-card">
+        <h2>Login to Bodega Cat</h2>
 
-        {error && <div className="auth-error">{error}</div>}
+        {error && <div className="error-message">{error}</div>}
 
-        <form onSubmit={handleSubmit} className="auth-form">
+        <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="username">Username</label>
             <input
@@ -40,7 +47,7 @@ const Login = () => {
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              disabled={loading}
+              required
             />
           </div>
 
@@ -51,19 +58,21 @@ const Login = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              disabled={loading}
+              required
             />
           </div>
 
-          <button type="submit" className="auth-button" disabled={loading}>
+          <button
+            type="submit"
+            className="auth-button"
+            disabled={loading}
+          >
             {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
 
-        <div className="auth-links">
-          <p>
-            Don't have an account with us? <Link to="/register">Register</Link>
-          </p>
+        <div className="auth-footer">
+          <p>Don't have an account? <Link to="/register">Register</Link></p>
         </div>
       </div>
     </div>

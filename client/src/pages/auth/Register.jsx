@@ -1,112 +1,157 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import './Auth.css';
+import './Register.css';
 
 const Register = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    firstName: '',
+    lastName: ''
+  });
+
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const { register, loading } = useAuth();
+
+  const { register } = useAuth();
   const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
 
-    // Basic validation
-    if (!username || !email || !password || !confirmPassword) {
-      setError('Please fill in all fields');
-      return;
-    }
-
-    if (password !== confirmPassword) {
+    // Validation
+    if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match');
       return;
     }
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setError('Please enter a valid email address');
-      return;
-    }
-
-    // Password strength validation
-    if (password.length < 6) {
+    if (formData.password.length < 6) {
       setError('Password must be at least 6 characters long');
       return;
     }
 
-    const success = await register(username, email, password);
-    if (success) {
-      navigate('/login');
+    try {
+      setError('');
+      setLoading(true);
+
+      await register(
+        formData.username,
+        formData.email,
+        formData.password,
+        formData.firstName,
+        formData.lastName
+      );
+
+      navigate('/login', { state: { message: 'Registration successful! Please login.' } });
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to register. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="auth-container">
-      <div className="auth-form-container">
+      <div className="auth-card register-card">
         <h2>Create an Account</h2>
 
-        {error && <div className="auth-error">{error}</div>}
+        {error && <div className="error-message">{error}</div>}
 
-        <form onSubmit={handleSubmit} className="auth-form">
+        <form onSubmit={handleSubmit}>
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="firstName">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="lastName">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+
           <div className="form-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Username*</label>
             <input
               type="text"
               id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              disabled={loading}
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              required
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email*</label>
             <input
               type="email"
               id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={loading}
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password*</label>
             <input
               type="password"
               id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              disabled={loading}
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
+            <label htmlFor="confirmPassword">Confirm Password*</label>
             <input
               type="password"
               id="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              disabled={loading}
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
             />
           </div>
 
-          <button type="submit" className="auth-button" disabled={loading}>
-            {loading ? 'Creating Account...' : 'Register'}
+          <button
+            type="submit"
+            className="auth-button"
+            disabled={loading}
+          >
+            {loading ? 'Registering...' : 'Register'}
           </button>
         </form>
 
-        <div className="auth-links">
-          <p>
-            Already have an account? <Link to="/login">Login</Link>
-          </p>
+        <div className="auth-footer">
+          <p>Already have an account? <Link to="/login">Login</Link></p>
         </div>
       </div>
     </div>

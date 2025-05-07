@@ -1,33 +1,48 @@
 package com.lkhn.ecommerce.models;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users",
+       uniqueConstraints = {
+           @UniqueConstraint(columnNames = "username"),
+           @UniqueConstraint(columnNames = "email")
+       })
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @NotBlank
+    @Size(max = 20)
     private String username;
 
-    @Column(nullable = false, unique = true)
+    @NotBlank
+    @Size(max = 50)
+    @Email
     private String email;
 
-    @Column(nullable = false)
+    @NotBlank
+    @Size(max = 120)
     private String password;
 
-    @Column(nullable = false)
+    @Size(max = 50)
+    private String firstName;
+
+    @Size(max = 50)
+    private String lastName;
+
+    @NotBlank
     private String role = "USER"; // Default role
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt = LocalDateTime.now();
-
-    // Constructors
-    public User() {}
+    public User() {
+    }
 
     public User(String username, String email, String password) {
         this.username = username;
@@ -35,7 +50,14 @@ public class User {
         this.password = password;
     }
 
-    // Getters & Setters
+    public User(String username, String email, String password, String firstName, String lastName) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public Long getId() {
         return id;
     }
@@ -68,19 +90,27 @@ public class User {
         this.password = password;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getRole() {
         return role;
     }
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 }

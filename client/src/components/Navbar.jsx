@@ -4,18 +4,18 @@ import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
 
 const Navbar = () => {
-  const { currentUser, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-    setIsMenuOpen(false);
-  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+    setIsMenuOpen(false);
   };
 
   return (
@@ -25,23 +25,14 @@ const Navbar = () => {
           Bodega Cat
         </Link>
 
-        {/* Mobile menu button */}
         <div className="menu-icon" onClick={toggleMenu}>
-          <span className={`menu-icon-bar ${isMenuOpen ? 'open' : ''}`}></span>
-          <span className={`menu-icon-bar ${isMenuOpen ? 'open' : ''}`}></span>
-          <span className={`menu-icon-bar ${isMenuOpen ? 'open' : ''}`}></span>
+          <i className={isMenuOpen ? 'fas fa-times' : 'fas fa-bars'} />
         </div>
 
-        {/* Navigation links */}
-        <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+        <ul className={isMenuOpen ? 'nav-menu active' : 'nav-menu'}>
           <li className="nav-item">
             <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>
               Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/cats" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-              Cats
             </Link>
           </li>
           <li className="nav-item">
@@ -50,16 +41,20 @@ const Navbar = () => {
             </Link>
           </li>
 
-          {/* Conditional rendering based on authentication state */}
           {currentUser ? (
             <>
+              <li className="nav-item">
+                <Link to="/cats" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+                  Cats
+                </Link>
+              </li>
               <li className="nav-item">
                 <Link to="/profile" className="nav-link" onClick={() => setIsMenuOpen(false)}>
                   Profile
                 </Link>
               </li>
               <li className="nav-item">
-                <button onClick={handleLogout} className="nav-button logout-button">
+                <button className="nav-link logout-link" onClick={handleLogout}>
                   Logout
                 </button>
               </li>
@@ -72,7 +67,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/register" className="nav-button register-button" onClick={() => setIsMenuOpen(false)}>
+                <Link to="/register" className="nav-link register-link" onClick={() => setIsMenuOpen(false)}>
                   Register
                 </Link>
               </li>

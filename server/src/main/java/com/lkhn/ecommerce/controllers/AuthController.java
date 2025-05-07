@@ -1,6 +1,10 @@
 package com.lkhn.ecommerce.controllers;
 
 import com.lkhn.ecommerce.models.User;
+import com.lkhn.ecommerce.payload.JwtResponse;
+import com.lkhn.ecommerce.payload.LoginRequest;
+import com.lkhn.ecommerce.payload.MessageResponse;
+import com.lkhn.ecommerce.payload.RegisterRequest;
 import com.lkhn.ecommerce.repositories.UserRepository;
 import com.lkhn.ecommerce.security.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,82 +17,67 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.validation.Valid;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "*")
 public class AuthController {
+    @Autowired
+    AuthenticationManager authenticationManager;
 
     @Autowired
-    private AuthenticationManager authenticationManager;
+    UserRepository userRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    PasswordEncoder encoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
-
-    @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody User user) {
-        // Check if username is already taken
-        if (userRepository.existsByUsername(user.getUsername())) {
-            return ResponseEntity.badRequest().body("Username is already taken");
-        }
-
-        // Check if email is already in use
-        if (userRepository.existsByEmail(user.getEmail())) {
-            return ResponseEntity.badRequest().body("Email is already in use");
-        }
-
-        // Create new user
-        User newUser = new User(
-                user.getUsername(),
-                user.getEmail(),
-                passwordEncoder.encode(user.getPassword())
-        );
-
-        userRepository.save(newUser);
-        return ResponseEntity.ok("User registered successfully");
-    }
+    JwtTokenUtil jwtTokenUtil;
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticateUser(@RequestBody Map<String, String> loginRequest) {
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginRequest.get("username"),
-                        loginRequest.get("password")
-                )
-        );
+                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String jwt = jwtTokenUtil.generateToken(userDetails);
 
-        Map<String, Object> response = new HashMap<>();
-        response.put("token", jwt);
-        response.put("username", userDetails.getUsername());
+        User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow();
 
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(new JwtResponse(jwt,
+                                                 user.getId(),
+                                                 user.getUsername(),
+                                                 user.getEmail(),
+                                                 user.getRole()));
     }
 
-    @GetMapping("/me")
-    public ResponseEntity<?> getCurrentUser(Authentication authentication) {
-        if (authentication == null) {
-            return ResponseEntity.status(401).body("Not authenticated");
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest registerRequest) {
+        if (userRepository.existsByUsername(registerRequest.getUsername())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Username is already taken!"));
         }
 
-        String username = authentication.getName();
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found 🥲"));
+        if (userRepository.existsByEmail(registerRequest.getEmail())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Email is already in use!"));
+        }
 
-        // Don't return password
-        user.setPassword(null);
+        // Create new user's account
+        User user = new User();
+        user.setUsername(registerRequest.getUsername());
+        user.setEmail(registerRequest.getEmail());
+        user.setPassword(encoder.encode(registerRequest.getPassword()));
+        user.setFirstName(registerRequest.getFirstName());
+        user.setLastName(registerRequest.getLastName());
 
-        return ResponseEntity.ok(user);
+        userRepository.save(user);
+
+        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 }
