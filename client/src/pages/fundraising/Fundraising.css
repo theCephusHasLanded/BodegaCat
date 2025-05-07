@@ -1,0 +1,97 @@
+.fundraising-container {
+  padding: 2rem 0;
+}
+
+.fundraising-intro {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.fundraiser-card {
+  transition: transform 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fundraiser-card:hover {
+  transform: translateY(-5px);
+}
+
+.fundraiser-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.goal-amount {
+  color: #6c757d;
+}
+
+.raised-amount {
+  font-weight: bold;
+}
+
+.fundraiser-detail-image {
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.fundraiser-detail-stats {
+  padding: 1rem 0;
+}
+
+.progress-large {
+  height: 2rem;
+  font-size: 1rem;
+}
+
+.current-amount {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #28a745;
+}
+
+.goal-label {
+  color: #6c757d;
+}
+
+.fundraiser-description {
+  font-size: 1.1rem;
+  margin: 1.5rem 0;
+  white-space: pre-line;
+}
+
+.fundraiser-store {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+.donation-card {
+  transition: background-color 0.2s;
+}
+
+.donation-card:hover {
+  background-color: #f8f9fa;
+}
+
+.donation-name {
+  font-weight: bold;
+}
+
+.donation-message {
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.donation-amount {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.donation-date {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}

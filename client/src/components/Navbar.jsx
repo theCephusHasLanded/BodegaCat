@@ -40,12 +40,32 @@ const Navbar = () => {
               About
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to="/bodegas" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+              Bodegas
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/fundraising" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+              Fundraising
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/membership" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+              Membership
+            </Link>
+          </li>
 
           {currentUser ? (
             <>
               <li className="nav-item">
                 <Link to="/cats" className="nav-link" onClick={() => setIsMenuOpen(false)}>
                   Cats
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/passport" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+                  Passport
                 </Link>
               </li>
               <li className="nav-item">

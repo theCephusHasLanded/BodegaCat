@@ -1,0 +1,63 @@
+.membership-container {
+  padding: 2rem 0;
+}
+
+.membership-card {
+  height: 100%;
+  transition: transform 0.3s;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.membership-card:hover {
+  transform: translateY(-5px);
+}
+
+.membership-card .card-header {
+  font-weight: bold;
+  text-align: center;
+}
+
+.membership-card .price {
+  font-size: 2rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.membership-card .benefits {
+  margin-bottom: 2rem;
+}
+
+.membership-card .benefits ul {
+  padding-left: 1.5rem;
+}
+
+.membership-card .benefits li {
+  margin-bottom: 0.5rem;
+}
+
+.membership-card.champion {
+  border-color: #28a745;
+}
+
+.membership-card.champion .card-header {
+  background-color: #28a745;
+  color: white;
+}
+
+.membership-info {
+  margin-top: 3rem;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+
+.membership-info h3 {
+  margin-bottom: 1rem;
+}
+
+.membership-info p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}

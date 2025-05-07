@@ -10,7 +10,12 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Profile from './pages/profile/Profile';
 import Cats from './pages/cats/Cats';
+import Membership from './pages/membership/Membership';
+import Passport from './pages/passport/Passport';
+import Fundraising from './pages/fundraising/Fundraising';
+import BodegaExplorer from './pages/bodegas/BodegaExplorer';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -40,6 +45,10 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route path="/membership" element={<Membership />} />
+              <Route path="/passport" element={<Passport />} />
+              <Route path="/fundraising" element={<Fundraising />} />
+              <Route path="/bodegas" element={<BodegaExplorer />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </main>
