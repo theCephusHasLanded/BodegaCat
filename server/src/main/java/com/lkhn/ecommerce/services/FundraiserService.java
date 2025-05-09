@@ -1,10 +1,9 @@
 package com.lkhn.ecommerce.services;
 
-import com.lkhn.ecommerce.models.BodegaStore;
+import com.lkhn.ecommerce.exception.ResourceNotFoundException;
 import com.lkhn.ecommerce.models.Donation;
 import com.lkhn.ecommerce.models.Fundraiser;
 import com.lkhn.ecommerce.models.User;
-import com.lkhn.ecommerce.repositories.BodegaStoreRepository;
 import com.lkhn.ecommerce.repositories.DonationRepository;
 import com.lkhn.ecommerce.repositories.FundraiserRepository;
 import com.lkhn.ecommerce.repositories.UserRepository;
@@ -14,149 +13,131 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class FundraiserService {
 
     @Autowired
     private FundraiserRepository fundraiserRepository;
-    
-    @Autowired
-    private BodegaStoreRepository bodegaStoreRepository;
-    
-    @Autowired
-    private UserRepository userRepository;
-    
+
     @Autowired
     private DonationRepository donationRepository;
-    
+
+    @Autowired
+    private UserRepository userRepository;
+
     @Autowired
     private AchievementService achievementService;
-    
+
     public List<Fundraiser> getAllFundraisers() {
         return fundraiserRepository.findAll();
     }
-    
-    public Optional<Fundraiser> getFundraiserById(Long id) {
-        return fundraiserRepository.findById(id);
+
+    public Fundraiser getFundraiserById(Long id) {
+        return fundraiserRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Fundraiser not found with id: " + id));
     }
-    
-    public List<Fundraiser> getFundraisersByBodegaStore(Long bodegaStoreId) {
-        return fundraiserRepository.findByBodegaStoreId(bodegaStoreId);
-    }
-    
-    public List<Fundraiser> getActiveFundraisersByBodegaStore(Long bodegaStoreId) {
-        return fundraiserRepository.findByActiveAndBodegaStoreId(true, bodegaStoreId);
-    }
-    
-    public List<Fundraiser> getFundraisersByCategory(String category) {
-        return fundraiserRepository.findByCategory(category);
-    }
-    
-    public List<Fundraiser> getTopProgressFundraisers() {
-        return fundraiserRepository.findTopProgressFundraisers();
-    }
-    
-    public List<Fundraiser> getMostSupportedFundraisers() {
-        return fundraiserRepository.findMostSupportedFundraisers();
-    }
-    
+
     @Transactional
-    public Fundraiser createFundraiser(String title, String description, Double goalAmount, 
-                                      String category, Long bodegaStoreId) {
-        BodegaStore bodegaStore = bodegaStoreRepository.findById(bodegaStoreId)
-                .orElseThrow(() -> new RuntimeException("Bodega store not found"));
+    public Fundraiser createFundraiser(String title, String description, Double goalAmount, Long bodegaStoreId) {
+        Fundraiser fundraiser = new Fundraiser();
+        fundraiser.setTitle(title);
+        fundraiser.setDescription(description);
+        fundraiser.setGoalAmount(goalAmount);
+        fundraiser.setCurrentAmount(0.0);
+        fundraiser.setCreationDate(LocalDateTime.now());
+        
+        // Set bodega store reference if provided
+        if (bodegaStoreId != null) {
+            // Add BodegaStore reference logic here
+        }
+        
+        return fundraiserRepository.save(fundraiser);
+    }
+
+    @Transactional
+    public Fundraiser createFundraiser(String title, String description, Double goalAmount, String imageUrl, Long creatorId) {
+        User creator = userRepository.findById(creatorId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + creatorId));
         
         Fundraiser fundraiser = new Fundraiser();
         fundraiser.setTitle(title);
         fundraiser.setDescription(description);
         fundraiser.setGoalAmount(goalAmount);
-        fundraiser.setStartDate(LocalDateTime.now());
-        fundraiser.setCategory(category);
-        fundraiser.setBodegaStore(bodegaStore);
-        fundraiser.setActive(true);
+        fundraiser.setCurrentAmount(0.0);
+        fundraiser.setCreationDate(LocalDateTime.now());
+        fundraiser.setImageUrl(imageUrl);
+        fundraiser.setCreator(creator);
         
         return fundraiserRepository.save(fundraiser);
     }
-    
+
     @Transactional
-    public void closeFundraiser(Long fundraiserId) {
-        Fundraiser fundraiser = fundraiserRepository.findById(fundraiserId)
-                .orElseThrow(() -> new RuntimeException("Fundraiser not found"));
-        
-        fundraiser.setActive(false);
-        fundraiser.setEndDate(LocalDateTime.now());
-        
-        fundraiserRepository.save(fundraiser);
-    }
-    
-    @Transactional
-    public Donation makeDonation(Long fundraiserId, Long userId, Double amount, String message, boolean anonymous) {
-        Fundraiser fundraiser = fundraiserRepository.findById(fundraiserId)
-                .orElseThrow(() -> new RuntimeException("Fundraiser not found"));
-        
+    public Donation processDonation(Long fundraiserId, Long userId, Double amount, String message, boolean anonymous) {
+        Fundraiser fundraiser = getFundraiserById(fundraiserId);
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
         
-        if (!fundraiser.isActive()) {
-            throw new RuntimeException("This fundraiser is no longer active");
-        }
-        
+        // Create and save donation
         Donation donation = new Donation();
         donation.setAmount(amount);
-        donation.setUser(user);
-        donation.setFundraiser(fundraiser);
         donation.setMessage(message);
         donation.setAnonymous(anonymous);
         donation.setDonationDate(LocalDateTime.now());
+        donation.setFundraiser(fundraiser);
+        donation.setUser(user);
         
-        // Add donation to fundraiser and update current amount
-        fundraiser.addDonation(donation);
+        // Update fundraiser amount
+        fundraiser.setCurrentAmount(fundraiser.getCurrentAmount() + amount);
+        fundraiserRepository.save(fundraiser);
         
-        // Check if donation qualifies for achievements
-        checkForDonationAchievements(user, amount);
+        // Check if donation unlocks achievements
+        checkDonationAchievements(user, amount);
         
         return donationRepository.save(donation);
     }
-    
-    private void checkForDonationAchievements(User user, Double amount) {
-        // Check for first donation achievement
-        Double totalDonations = donationRepository.getTotalDonationsByUser(user.getId());
-        if (totalDonations == null || totalDonations <= amount) {
-            // This is the first donation
-            achievementService.grantFirstDonationAchievement(user.getId());
+
+    private void checkDonationAchievements(User user, Double amount) {
+        // First donation achievement
+        achievementService.checkAndGrantAchievement(user.getId(), "FIRST_DONATION");
+        
+        // Donation amount-based achievements
+        if (amount >= 5.0) {
+            achievementService.checkAndGrantAchievement(user.getId(), "SUPPORTER");
         }
         
-        // Check for donation amount milestones
-        totalDonations = (totalDonations == null ? 0 : totalDonations) + amount;
-        
-        if (totalDonations >= 100) {
-            achievementService.grantDonationMilestoneAchievement(user.getId(), "SUPPORTER");
+        if (amount >= 25.0) {
+            achievementService.checkAndGrantAchievement(user.getId(), "BENEFACTOR");
         }
         
-        if (totalDonations >= 500) {
-            achievementService.grantDonationMilestoneAchievement(user.getId(), "PATRON");
+        if (amount >= 100.0) {
+            achievementService.checkAndGrantAchievement(user.getId(), "CHAMPION");
         }
         
-        if (totalDonations >= 1000) {
-            achievementService.grantDonationMilestoneAchievement(user.getId(), "BENEFACTOR");
+        // Cumulative donations achievements
+        Double totalDonated = getTotalUserDonations(user.getId());
+        
+        if (totalDonated >= 50.0) {
+            achievementService.checkAndGrantAchievement(user.getId(), "REGULAR_SUPPORTER");
+        }
+        
+        if (totalDonated >= 250.0) {
+            achievementService.checkAndGrantAchievement(user.getId(), "COMMUNITY_PILLAR");
         }
     }
-    
-    public Double getTotalDonationsForFundraiser(Long fundraiserId) {
-        return donationRepository.getTotalDonationsForFundraiser(fundraiserId);
+
+    private Double getTotalUserDonations(Long userId) {
+        List<Donation> userDonations = donationRepository.findByUserId(userId);
+        return userDonations.stream()
+                .mapToDouble(Donation::getAmount)
+                .sum();
     }
-    
-    public List<Donation> getDonationsByFundraiser(Long fundraiserId) {
+
+    public List<Donation> getFundraiserDonations(Long fundraiserId) {
         return donationRepository.findByFundraiserId(fundraiserId);
     }
-    
-    public List<Donation> getDonationsByUser(Long userId) {
+
+    public List<Donation> getUserDonations(Long userId) {
         return donationRepository.findByUserId(userId);
-    }
-    
-    public Double getTotalDonationsByUser(Long userId) {
-        return donationRepository.getTotalDonationsByUser(userId);
     }
 }

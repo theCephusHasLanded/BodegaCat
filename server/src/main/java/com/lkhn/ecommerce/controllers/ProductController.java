@@ -1,4 +1,4 @@
-package com.lkhn.ecommerce.controller;
+package com.lkhn.ecommerce.controllers;
 
 import com.lkhn.ecommerce.dto.ProductDTO;
 import com.lkhn.ecommerce.models.BenefitsCategory;

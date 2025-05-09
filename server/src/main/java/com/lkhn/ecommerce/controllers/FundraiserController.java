@@ -1,10 +1,12 @@
 package com.lkhn.ecommerce.controllers;
 
+import com.lkhn.ecommerce.exception.ResourceNotFoundException;
 import com.lkhn.ecommerce.models.Donation;
 import com.lkhn.ecommerce.models.Fundraiser;
 import com.lkhn.ecommerce.payload.DonationRequest;
 import com.lkhn.ecommerce.payload.FundraiserRequest;
 import com.lkhn.ecommerce.payload.MessageResponse;
+import com.lkhn.ecommerce.repositories.FundraiserRepository;
 import com.lkhn.ecommerce.security.UserDetailsImpl;
 import com.lkhn.ecommerce.services.FundraiserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -64,6 +67,20 @@ public class FundraiserController {
         );
         return ResponseEntity.ok(donation);
     }
+
+    @PostMapping("/creator")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Fundraiser> createFundraiserByCreator(@RequestBody Map<String, Object> fundraiserData) {
+        String title = (String) fundraiserData.get("title");
+        String description = (String) fundraiserData.get("description");
+        Double goalAmount = Double.valueOf(fundraiserData.get("goalAmount").toString());
+        String imageUrl = (String) fundraiserData.get("imageUrl");
+        Long creatorId = Long.valueOf(fundraiserData.get("creatorId").toString());
+
+        Fundraiser fundraiser = fundraiserService.createFundraiser(title, description, goalAmount, imageUrl, creatorId);
+        return ResponseEntity.ok(fundraiser);
+    }
+
 
     @GetMapping("/{fundraiserId}/donations")
     public ResponseEntity<?> getFundraiserDonations(@PathVariable Long fundraiserId) {

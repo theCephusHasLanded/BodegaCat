@@ -8,6 +8,7 @@ import com.lkhn.ecommerce.services.MembershipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import java.util.Collections;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,6 +53,7 @@ public class MembershipController {
 
     @GetMapping("/benefits")
     public ResponseEntity<?> getMembershipBenefits() {
-        return ResponseEntity.ok(membershipService.getAllMembershipTierBenefits());
+        // Temporarily return empty list until MembershipTierBenefit is implemented
+        return ResponseEntity.ok(Collections.emptyList());
     }
 }

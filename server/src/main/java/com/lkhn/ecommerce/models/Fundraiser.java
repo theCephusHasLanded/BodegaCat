@@ -10,7 +10,6 @@ import java.util.Set;
 @Entity
 @Table(name = "fundraisers")
 public class Fundraiser {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,8 +17,6 @@ public class Fundraiser {
     @NotBlank
     private String title;
     
-    @NotBlank
-    @Column(length = 1000)
     private String description;
     
     @NotNull
@@ -27,33 +24,22 @@ public class Fundraiser {
     
     private Double currentAmount = 0.0;
     
-    @NotNull
-    private LocalDateTime startDate;
-    
-    private LocalDateTime endDate;
+    private LocalDateTime creationDate;
     
     private String imageUrl;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "creator_id")
+    private User creator;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bodega_store_id")
     private BodegaStore bodegaStore;
     
-    @OneToMany(mappedBy = "fundraiser", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "fundraiser", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Donation> donations = new HashSet<>();
-    
-    private boolean active = true;
-    
-    private String category; // e.g., "RENOVATION", "EQUIPMENT", "CAT_CARE", "COMMUNITY_EVENT"
-    
+
     public Fundraiser() {
-    }
-    
-    public Fundraiser(String title, String description, Double goalAmount, LocalDateTime startDate, BodegaStore bodegaStore) {
-        this.title = title;
-        this.description = description;
-        this.goalAmount = goalAmount;
-        this.startDate = startDate;
-        this.bodegaStore = bodegaStore;
     }
 
     public Long getId() {
@@ -96,20 +82,12 @@ public class Fundraiser {
         this.currentAmount = currentAmount;
     }
 
-    public LocalDateTime getStartDate() {
-        return startDate;
+    public LocalDateTime getCreationDate() {
+        return creationDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDateTime getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 
     public String getImageUrl() {
@@ -118,6 +96,14 @@ public class Fundraiser {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 
     public BodegaStore getBodegaStore() {
@@ -134,38 +120,5 @@ public class Fundraiser {
 
     public void setDonations(Set<Donation> donations) {
         this.donations = donations;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-    
-    public void addDonation(Donation donation) {
-        this.donations.add(donation);
-        this.currentAmount += donation.getAmount();
-        donation.setFundraiser(this);
-    }
-    
-    public double getProgressPercentage() {
-        if (goalAmount <= 0) {
-            return 0;
-        }
-        return (currentAmount / goalAmount) * 100;
-    }
-    
-    public boolean isGoalReached() {
-        return currentAmount >= goalAmount;
     }
 }

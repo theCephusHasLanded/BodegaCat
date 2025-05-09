@@ -3,6 +3,7 @@ package com.lkhn.ecommerce.controllers;
 import com.lkhn.ecommerce.models.BodegaStore;
 import com.lkhn.ecommerce.models.BodegaVisit;
 import com.lkhn.ecommerce.models.Cat;
+import com.lkhn.ecommerce.exception.ResourceNotFoundException;
 import com.lkhn.ecommerce.payload.BodegaStoreRequest;
 import com.lkhn.ecommerce.payload.BodegaVisitRequest;
 import com.lkhn.ecommerce.payload.CatRequest;

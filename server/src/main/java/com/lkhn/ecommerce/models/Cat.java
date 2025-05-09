@@ -3,12 +3,10 @@ package com.lkhn.ecommerce.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "cats")
 public class Cat {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,34 +15,15 @@ public class Cat {
     @Size(max = 50)
     private String name;
     
-    private String breed;
-    
-    private String color;
+    private String description;
     
     private String imageUrl;
     
-    @Size(max = 500)
-    private String bio;
-    
-    private LocalDate dateOfBirth;
-    
-    private LocalDate dateJoined;
-    
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bodega_store_id")
     private BodegaStore bodegaStore;
-    
-    private boolean featured = false;
-    
-    private int likesCount = 0;
-    
+
     public Cat() {
-    }
-    
-    public Cat(String name, BodegaStore bodegaStore) {
-        this.name = name;
-        this.bodegaStore = bodegaStore;
-        this.dateJoined = LocalDate.now();
     }
 
     public Long getId() {
@@ -63,20 +42,12 @@ public class Cat {
         this.name = name;
     }
 
-    public String getBreed() {
-        return breed;
+    public String getDescription() {
+        return description;
     }
 
-    public void setBreed(String breed) {
-        this.breed = breed;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getImageUrl() {
@@ -87,55 +58,11 @@ public class Cat {
         this.imageUrl = imageUrl;
     }
 
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public LocalDate getDateJoined() {
-        return dateJoined;
-    }
-
-    public void setDateJoined(LocalDate dateJoined) {
-        this.dateJoined = dateJoined;
-    }
-
     public BodegaStore getBodegaStore() {
         return bodegaStore;
     }
 
     public void setBodegaStore(BodegaStore bodegaStore) {
         this.bodegaStore = bodegaStore;
-    }
-
-    public boolean isFeatured() {
-        return featured;
-    }
-
-    public void setFeatured(boolean featured) {
-        this.featured = featured;
-    }
-
-    public int getLikesCount() {
-        return likesCount;
-    }
-
-    public void setLikesCount(int likesCount) {
-        this.likesCount = likesCount;
-    }
-    
-    public void incrementLikes() {
-        this.likesCount++;
     }
 }

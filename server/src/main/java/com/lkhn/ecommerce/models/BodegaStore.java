@@ -9,7 +9,6 @@ import java.util.Set;
 @Entity
 @Table(name = "bodega_stores")
 public class BodegaStore {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,33 +18,25 @@ public class BodegaStore {
     private String name;
     
     @NotBlank
-    @Size(max = 255)
     private String address;
     
-    @Size(max = 500)
-    private String description;
-    
+    @NotBlank
     private String neighborhood;
+    
+    private String description;
     
     private String imageUrl;
     
-    private String ownerName;
-    
-    private Integer yearEstablished;
-    
-    @OneToMany(mappedBy = "bodegaStore", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "bodegaStore", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Cat> cats = new HashSet<>();
     
-    @OneToMany(mappedBy = "bodegaStore", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "bodegaStore", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<BodegaVisit> visits = new HashSet<>();
+    
+    @OneToMany(mappedBy = "bodegaStore", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Fundraiser> fundraisers = new HashSet<>();
-    
+
     public BodegaStore() {
-    }
-    
-    public BodegaStore(String name, String address, String neighborhood) {
-        this.name = name;
-        this.address = address;
-        this.neighborhood = neighborhood;
     }
 
     public Long getId() {
@@ -72,20 +63,20 @@ public class BodegaStore {
         this.address = address;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getNeighborhood() {
         return neighborhood;
     }
 
     public void setNeighborhood(String neighborhood) {
         this.neighborhood = neighborhood;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getImageUrl() {
@@ -96,22 +87,6 @@ public class BodegaStore {
         this.imageUrl = imageUrl;
     }
 
-    public String getOwnerName() {
-        return ownerName;
-    }
-
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
-    }
-
-    public Integer getYearEstablished() {
-        return yearEstablished;
-    }
-
-    public void setYearEstablished(Integer yearEstablished) {
-        this.yearEstablished = yearEstablished;
-    }
-
     public Set<Cat> getCats() {
         return cats;
     }
@@ -120,31 +95,19 @@ public class BodegaStore {
         this.cats = cats;
     }
 
+    public Set<BodegaVisit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(Set<BodegaVisit> visits) {
+        this.visits = visits;
+    }
+
     public Set<Fundraiser> getFundraisers() {
         return fundraisers;
     }
 
     public void setFundraisers(Set<Fundraiser> fundraisers) {
         this.fundraisers = fundraisers;
-    }
-    
-    public void addCat(Cat cat) {
-        this.cats.add(cat);
-        cat.setBodegaStore(this);
-    }
-    
-    public void removeCat(Cat cat) {
-        this.cats.remove(cat);
-        cat.setBodegaStore(null);
-    }
-    
-    public void addFundraiser(Fundraiser fundraiser) {
-        this.fundraisers.add(fundraiser);
-        fundraiser.setBodegaStore(this);
-    }
-    
-    public void removeFundraiser(Fundraiser fundraiser) {
-        this.fundraisers.remove(fundraiser);
-        fundraiser.setBodegaStore(null);
     }
 }
