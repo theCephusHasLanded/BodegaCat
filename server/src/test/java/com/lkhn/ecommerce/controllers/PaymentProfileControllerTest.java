@@ -1,9 +1,9 @@
 package com.lkhn.ecommerce.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lkhn.ecommerce.dto.PaymentRequestDTO;
-import com.lkhn.ecommerce.model.PaymentProfile;
-import com.lkhn.ecommerce.service.StripeService;
+import com.lkhn.ecommerce.payload.PaymentRequestDTO;
+import com.lkhn.ecommerce.models.PaymentProfile;
+import com.lkhn.ecommerce.services.StripeService;
 import com.stripe.exception.StripeException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -108,7 +108,6 @@ public class PaymentProfileControllerTest {
         paymentRequest.setBenefitsAmount(25.0);
         paymentRequest.setRegularAmount(15.0);
         paymentRequest.setRegularPaymentMethodId("pm_test123");
-        paymentRequest.setBenefitsProgram("SNAP");
 
         mockMvc.perform(post("/api/payments/checkout/mixed")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -127,8 +126,6 @@ public class PaymentProfileControllerTest {
         // Missing required fields
 
         mockMvc.perform(post("/api/payments/checkout/mixed")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(paymentRequest
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(paymentRequest)))
                 .andExpect(status().isBadRequest())

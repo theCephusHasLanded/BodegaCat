@@ -1,6 +1,6 @@
 package com.lkhn.ecommerce.controllers;
 
-import com.lkhn.ecommerce.service.OrderService;
+import com.lkhn.ecommerce.services.OrderService;
 import com.stripe.exception.SignatureVerificationException;
 import com.stripe.model.Event;
 import com.stripe.model.EventDataObjectDeserializer;

@@ -1,7 +1,7 @@
-package com.lkhn.ecommerce.service;
+package com.lkhn.ecommerce.services;
 
-import com.lkhn.ecommerce.model.PaymentProfile;
-import com.lkhn.ecommerce.repository.PaymentProfileRepository;
+import com.lkhn.ecommerce.models.PaymentProfile;
+import com.lkhn.ecommerce.repositories.PaymentProfileRepository;
 import com.stripe.exception.StripeException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
-import Navbar from './components/Navbar';
+import ModernNavbar from './components/ModernNavbar';
 import Footer from './components/Footer';
 import MatrixLoading from './components/MatrixLoading';
+import LucyChatbot from './components/LucyChatbot';
+import FeedbackModal from './components/FeedbackModal';
 import Home from './pages/home/Home';
 import About from './pages/about/About';
 import Login from './pages/auth/Login';
@@ -17,9 +19,12 @@ import Fundraising from './pages/fundraising/Fundraising';
 import BodegaExplorer from './pages/bodegas/BodegaExplorer';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './i18n/i18n'; // Import i18n configuration
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [showChatbot, setShowChatbot] = useState(false);
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   
   useEffect(() => {
     // Simulate loading time
@@ -30,6 +35,24 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
   
+  // Handler for toggling the chatbot
+  const handleChatbotToggle = (isVisible) => {
+    setShowChatbot(isVisible);
+    // Close feedback modal if chatbot is opened
+    if (isVisible) {
+      setShowFeedbackModal(false);
+    }
+  };
+  
+  // Handler for toggling the feedback modal
+  const handleFeedbackToggle = (isVisible) => {
+    setShowFeedbackModal(isVisible);
+    // Close chatbot if feedback modal is opened
+    if (isVisible) {
+      setShowChatbot(false);
+    }
+  };
+  
   return (
     <Router>
       <AuthProvider>
@@ -37,7 +60,12 @@ function App() {
           <MatrixLoading message="Connecting to NYC Bodega Network..." />
         ) : (
           <div className="app">
-            <Navbar />
+            <ModernNavbar 
+              onChatbotToggle={handleChatbotToggle}
+              onFeedbackToggle={handleFeedbackToggle}
+              isChatbotOpen={showChatbot}
+              isFeedbackOpen={showFeedbackModal}
+            />
             <main className="main-content">
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -68,6 +96,18 @@ function App() {
               </Routes>
             </main>
             <Footer />
+            
+            {/* Lucy Chatbot */}
+            <LucyChatbot 
+              isOpen={showChatbot} 
+              onClose={() => setShowChatbot(false)} 
+            />
+            
+            {/* Feedback Modal */}
+            <FeedbackModal 
+              isOpen={showFeedbackModal} 
+              onClose={() => setShowFeedbackModal(false)}
+            />
           </div>
         )}
       </AuthProvider>

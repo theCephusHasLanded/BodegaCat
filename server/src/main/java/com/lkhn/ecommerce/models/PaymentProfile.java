@@ -12,23 +12,35 @@ public class PaymentProfile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "user_id", nullable = false)
     private Long userId;
 
-    // Tokenized payment methods
+    @Column(name = "stripe_customer_id")
     private String stripeCustomerId;
 
-    // Benefits-related fields
-    private String ebtTokenId;
+    @Column(name = "default_payment_method_id")
+    private String defaultPaymentMethodId;
+
+    @Column(name = "ebt_verified")
     private boolean ebtVerified;
 
+    @Column(name = "ebt_token_id")
+    private String ebtTokenId;
+
     @ElementCollection
-    @CollectionTable(name = "payment_profile_benefit_programs",
-                    joinColumns = @JoinColumn(name = "payment_profile_id"))
-    @Column(name = "program_code")
+    @CollectionTable(name = "benefit_programs", joinColumns = @JoinColumn(name = "payment_profile_id"))
+    @Column(name = "program_name")
     private Set<String> enrolledBenefitPrograms = new HashSet<>();
 
-    // Getters and setters
+    // Constructors
+    public PaymentProfile() {
+    }
+
+    public PaymentProfile(Long userId) {
+        this.userId = userId;
+    }
+
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -53,12 +65,12 @@ public class PaymentProfile {
         this.stripeCustomerId = stripeCustomerId;
     }
 
-    public String getEbtTokenId() {
-        return ebtTokenId;
+    public String getDefaultPaymentMethodId() {
+        return defaultPaymentMethodId;
     }
 
-    public void setEbtTokenId(String ebtTokenId) {
-        this.ebtTokenId = ebtTokenId;
+    public void setDefaultPaymentMethodId(String defaultPaymentMethodId) {
+        this.defaultPaymentMethodId = defaultPaymentMethodId;
     }
 
     public boolean isEbtVerified() {
@@ -69,11 +81,38 @@ public class PaymentProfile {
         this.ebtVerified = ebtVerified;
     }
 
+    public String getEbtTokenId() {
+        return ebtTokenId;
+    }
+
+    public void setEbtTokenId(String ebtTokenId) {
+        this.ebtTokenId = ebtTokenId;
+    }
+
     public Set<String> getEnrolledBenefitPrograms() {
         return enrolledBenefitPrograms;
     }
 
     public void setEnrolledBenefitPrograms(Set<String> enrolledBenefitPrograms) {
         this.enrolledBenefitPrograms = enrolledBenefitPrograms;
+    }
+
+    public void addBenefitProgram(String programName) {
+        this.enrolledBenefitPrograms.add(programName);
+    }
+
+    public void removeBenefitProgram(String programName) {
+        this.enrolledBenefitPrograms.remove(programName);
+    }
+
+    @Override
+    public String toString() {
+        return "PaymentProfile{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", stripeCustomerId='" + stripeCustomerId + '\'' +
+                ", defaultPaymentMethodId='" + defaultPaymentMethodId + '\'' +
+                ", ebtVerified=" + ebtVerified +
+                '}';
     }
 }

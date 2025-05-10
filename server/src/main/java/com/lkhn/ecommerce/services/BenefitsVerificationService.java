@@ -41,6 +41,7 @@ public class BenefitsVerificationService {
 
             // Make API call to verification service
             // Note: In production, this would use proper security measures
+            @SuppressWarnings("unchecked")
             Map<String, Object> response = restTemplate.postForObject(
                 endpoint,
                 verificationData,
