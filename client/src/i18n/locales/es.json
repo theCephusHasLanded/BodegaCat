@@ -1,0 +1,148 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "bodegas": "Bodegas",
+    "fundraising": "Recaudación",
+    "membership": "Membresía",
+    "cats": "Gatos",
+    "passport": "Pasaporte",
+    "profile": "Perfil",
+    "login": "Iniciar Sesión",
+    "register": "Registrarse",
+    "logout": "Cerrar Sesión",
+    "lightMode": "Cambiar a Modo Claro",
+    "darkMode": "Cambiar a Modo Oscuro",
+    "feedback": "Dar Comentarios",
+    "chatbot": "Hablar con Lucy",
+    "closeMenu": "Cerrar Menú",
+    "openMenu": "Abrir Menú"
+  },
+  "chatbot": {
+    "greeting": "¡Hola {{username}}! Soy Lucy, tu asistente virtual de BodegaCat.",
+    "help": "¿Cómo puedo ayudarte a descubrir el mundo de los gatos de bodega de NYC hoy?",
+    "guest": "amigo",
+    "placeholder": "Escribe tu mensaje...",
+    "inputLabel": "Mensaje para Lucy",
+    "send": "Enviar mensaje",
+    "close": "Cerrar chat",
+    "suggestions": {
+      "findBodega": "Encontrar una bodega cerca",
+      "catOfTheDay": "Muéstrame el gato del día",
+      "fundraiser": "¿Cómo puedo donar?",
+      "passport": "Cuéntame sobre el pasaporte"
+    },
+    "responses": {
+      "greeting": "¡Hola! Soy Lucy, tu asistente virtual para todo lo relacionado con gatos de bodega.",
+      "findBodega": "Puedes encontrar bodegas cercanas visitando nuestra página Explorador donde puedes buscar por barrio o ver nuestro mapa interactivo.",
+      "catOfTheDay": "¡El gato destacado de hoy es Whiskers de Sunny Corner Deli en Brooklyn! Visita la página de Gatos para ver más adorables gatos de bodega.",
+      "fundraiser": "¡Tenemos varias recaudaciones activas para ayudar a los gatos de bodega! Puedes donar a través de nuestra página de Recaudación. El 100% de los ingresos van a programas de esterilización y cuidado.",
+      "passport": "¡El Pasaporte BodegaCat es nuestro programa de recompensas! Visita bodegas, conoce gatos y gana sellos. Colecciona suficientes para desbloquear beneficios especiales y descuentos."
+    },
+    "fallback": "No estoy segura de cómo ayudar con eso todavía. Por favor, intenta preguntar sobre bodegas, gatos, recaudaciones o el programa de pasaporte."
+  },
+  "feedback": {
+    "title": "Comparte tus Comentarios",
+    "type": "Tipo de Comentario",
+    "message": "Tu Mensaje",
+    "placeholder": "Cuéntanos lo que piensas...",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "close": "Cerrar comentarios",
+    "suggestion": "Sugerencia",
+    "bug": "Reporte de Error",
+    "question": "Pregunta",
+    "other": "Otro",
+    "thankYou": "¡Gracias por tus comentarios!",
+    "error": "Hubo un error al enviar tus comentarios. Por favor, inténtalo de nuevo."
+  },
+  "home": {
+    "hero": {
+      "title": "Descubre los Queridos Gatos de Bodega de NYC",
+      "subtitle": "Explora, Apoya, Conéctate",
+      "cta": "Comenzar"
+    },
+    "features": {
+      "explore": {
+        "title": "Explora",
+        "description": "Descubre gatos de bodega por toda la ciudad de Nueva York"
+      },
+      "support": {
+        "title": "Apoya",
+        "description": "Contribuye a recaudaciones que ayudan a gatos necesitados"
+      },
+      "connect": {
+        "title": "Conéctate",
+        "description": "Únete a una comunidad de entusiastas de gatos de bodega"
+      }
+    }
+  },
+  "bodegas": {
+    "search": "Buscar bodegas",
+    "filter": "Filtrar por",
+    "neighborhood": "Barrio",
+    "hasVisited": "Visitado",
+    "sortBy": "Ordenar por",
+    "nearest": "Más Cercano",
+    "mostVisits": "Más Visitas",
+    "recentActivity": "Actividad Reciente"
+  },
+  "cats": {
+    "search": "Buscar gatos",
+    "filter": "Filtrar por",
+    "bodega": "Bodega",
+    "neighborhood": "Barrio",
+    "personality": "Personalidad"
+  },
+  "fundraising": {
+    "active": "Recaudaciones Activas",
+    "featured": "Destacadas",
+    "recent": "Recientes",
+    "donate": "Donar",
+    "goal": "Meta",
+    "raised": "Recaudado",
+    "daysLeft": "Días Restantes"
+  },
+  "membership": {
+    "benefits": "Beneficios de Membresía",
+    "tiers": "Niveles de Membresía",
+    "join": "Unirse Ahora",
+    "renewal": "Fecha de Renovación"
+  },
+  "passport": {
+    "stamps": "Sellos Coleccionados",
+    "achievements": "Logros",
+    "nextReward": "Próxima Recompensa",
+    "scanQR": "Escanear Código QR"
+  },
+  "profile": {
+    "edit": "Editar Perfil",
+    "myVisits": "Mis Visitas",
+    "myDonations": "Mis Donaciones",
+    "myAchievements": "Mis Logros",
+    "settings": "Configuración de Cuenta",
+    "deleteAccount": "Eliminar Cuenta"
+  },
+  "auth": {
+    "login": "Iniciar Sesión",
+    "register": "Registrarse",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar Contraseña",
+    "forgotPassword": "¿Olvidaste tu Contraseña?",
+    "noAccount": "¿No tienes una cuenta?",
+    "haveAccount": "¿Ya tienes una cuenta?",
+    "signUpNow": "Regístrate ahora",
+    "loginNow": "Inicia sesión ahora"
+  },
+  "errors": {
+    "required": "Este campo es obligatorio",
+    "invalidEmail": "Por favor, introduce un correo electrónico válido",
+    "passwordLength": "La contraseña debe tener al menos 8 caracteres",
+    "passwordMatch": "Las contraseñas no coinciden",
+    "loginFailed": "Error al iniciar sesión. Por favor, verifica tus credenciales.",
+    "registrationFailed": "Error al registrarse. Por favor, inténtalo de nuevo.",
+    "networkError": "Error de red. Por favor, verifica tu conexión.",
+    "serverError": "Error del servidor. Por favor, inténtalo más tarde."
+  }
+}

@@ -63,11 +63,59 @@ main {
   color: #555;
 }
 
+@import url('https://cdn.jsdelivr.net/npm/victormono@latest/dist/index.min.css');
+
+:root {
+  /* NYC Color Palette */
+  --taxi-yellow: #F7B500;
+  --subway-steel: #2E5266;
+  --brownstone-brick: #8C271E;
+  --central-park-green: #4C9F70; 
+  --hudson-blue: #71A9F7;
+  --neon-bodega: #FF6B6C;
+  --concrete-gray: #ECECEC;
+  --night-asphalt: #1A1A1A;
+  
+  /* Glass effect variables */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Theme switching */
+body.dark-mode {
+  --bg-primary: var(--night-asphalt);
+  --bg-secondary: #252525;
+  --text-primary: var(--concrete-gray);
+  --text-secondary: #CCCCCC;
+  --accent-color: var(--taxi-yellow);
+  --accent-hover: #FFD54F;
+  --card-bg: rgba(30, 30, 30, 0.7);
+  --card-border: rgba(255, 255, 255, 0.08);
+}
+
+body:not(.dark-mode) {
+  --bg-primary: var(--concrete-gray);
+  --bg-secondary: #FFFFFF;
+  --text-primary: var(--night-asphalt);
+  --text-secondary: #333333;
+  --accent-color: var(--subway-steel);
+  --accent-hover: #3A6885;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(0, 0, 0, 0.08);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Victor Mono', monospace;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .app {
@@ -78,4 +126,117 @@ main {
 
 .main-content {
   flex: 1;
+  padding: 20px;
+  background-color: var(--bg-primary);
+}
+
+/* Card styles */
+.card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Button styles */
+.btn {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Victor Mono', monospace;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.btn:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+/* Matrix-inspired loading animation */
+@keyframes matrix-rain {
+  0% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.matrix-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.matrix-text {
+  color: var(--neon-bodega);
+  font-family: 'Victor Mono', monospace;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.matrix-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.matrix-drop {
+  position: absolute;
+  color: var(--central-park-green);
+  font-family: 'Victor Mono', monospace;
+  font-size: 1.2rem;
+  animation: matrix-rain 2s linear infinite;
+  opacity: 0;
 }

@@ -1,15 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(
+    localStorage.getItem('darkMode') === 'true' || 
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+  );
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Apply dark mode class to body
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+    // Save preference to localStorage
+    localStorage.setItem('darkMode', isDarkMode);
+  }, [isDarkMode]);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
   };
 
   const handleLogout = () => {
@@ -22,7 +41,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          Bodega Cat
+          <span>🐱</span> Bodega Cat
         </Link>
 
         <div className="menu-icon" onClick={toggleMenu}>
@@ -40,12 +59,32 @@ const Navbar = () => {
               About
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to="/bodegas" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+              Bodegas
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/fundraising" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+              Fundraising
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/membership" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+              Membership
+            </Link>
+          </li>
 
           {currentUser ? (
             <>
               <li className="nav-item">
                 <Link to="/cats" className="nav-link" onClick={() => setIsMenuOpen(false)}>
                   Cats
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/passport" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+                  Passport
                 </Link>
               </li>
               <li className="nav-item">
@@ -73,6 +112,10 @@ const Navbar = () => {
               </li>
             </>
           )}
+          
+          <button className="theme-toggle" onClick={toggleTheme} title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}>
+            {isDarkMode ? '☀️' : '🌙'}
+          </button>
         </ul>
       </div>
     </nav>

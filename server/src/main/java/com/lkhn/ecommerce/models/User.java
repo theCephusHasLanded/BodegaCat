@@ -40,6 +40,35 @@ public class User {
 
     @NotBlank
     private String role = "USER"; // Default role
+    
+    private String profileImageUrl;
+    
+    private int passportPoints = 0;
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Membership> memberships = new HashSet<>();
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Donation> donations = new HashSet<>();
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<BodegaVisit> visits = new HashSet<>();
+    
+    @ManyToMany
+    @JoinTable(
+        name = "user_achievement",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "achievement_id")
+    )
+    private Set<Achievement> achievements = new HashSet<>();
+    
+    @ManyToMany
+    @JoinTable(
+        name = "user_favorite_cats",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "cat_id")
+    )
+    private Set<Cat> favoriteCats = new HashSet<>();
 
     public User() {
     }
@@ -112,5 +141,85 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+    
+    public String getProfileImageUrl() {
+        return profileImageUrl;
+    }
+
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
+    }
+
+    public int getPassportPoints() {
+        return passportPoints;
+    }
+
+    public void setPassportPoints(int passportPoints) {
+        this.passportPoints = passportPoints;
+    }
+    
+    public void addPassportPoints(int points) {
+        this.passportPoints += points;
+    }
+
+    public Set<Membership> getMemberships() {
+        return memberships;
+    }
+
+    public void setMemberships(Set<Membership> memberships) {
+        this.memberships = memberships;
+    }
+    
+    public Membership getActiveMembership() {
+        return memberships.stream()
+                .filter(Membership::isActive)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Set<Donation> getDonations() {
+        return donations;
+    }
+
+    public void setDonations(Set<Donation> donations) {
+        this.donations = donations;
+    }
+
+    public Set<BodegaVisit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(Set<BodegaVisit> visits) {
+        this.visits = visits;
+    }
+
+    public Set<Achievement> getAchievements() {
+        return achievements;
+    }
+
+    public void setAchievements(Set<Achievement> achievements) {
+        this.achievements = achievements;
+    }
+    
+    public void addAchievement(Achievement achievement) {
+        this.achievements.add(achievement);
+        this.passportPoints += achievement.getPointsValue();
+    }
+
+    public Set<Cat> getFavoriteCats() {
+        return favoriteCats;
+    }
+
+    public void setFavoriteCats(Set<Cat> favoriteCats) {
+        this.favoriteCats = favoriteCats;
+    }
+    
+    public void addFavoriteCat(Cat cat) {
+        this.favoriteCats.add(cat);
+    }
+    
+    public void removeFavoriteCat(Cat cat) {
+        this.favoriteCats.remove(cat);
     }
 }

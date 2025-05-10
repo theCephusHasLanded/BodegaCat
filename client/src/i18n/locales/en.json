@@ -1,0 +1,148 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "bodegas": "Bodegas",
+    "fundraising": "Fundraising",
+    "membership": "Membership",
+    "cats": "Cats",
+    "passport": "Passport",
+    "profile": "Profile",
+    "login": "Log In",
+    "register": "Sign Up",
+    "logout": "Log Out",
+    "lightMode": "Switch to Light Mode",
+    "darkMode": "Switch to Dark Mode",
+    "feedback": "Give Feedback",
+    "chatbot": "Chat with Lucy",
+    "closeMenu": "Close Menu",
+    "openMenu": "Open Menu"
+  },
+  "chatbot": {
+    "greeting": "Hello {{username}}! I'm Lucy, your BodegaCat virtual assistant.",
+    "help": "How can I help you discover the world of NYC bodega cats today?",
+    "guest": "there",
+    "placeholder": "Type your message...",
+    "inputLabel": "Message to Lucy",
+    "send": "Send message",
+    "close": "Close chat",
+    "suggestions": {
+      "findBodega": "Find a bodega near me",
+      "catOfTheDay": "Show me the cat of the day",
+      "fundraiser": "How can I donate?",
+      "passport": "Tell me about the passport"
+    },
+    "responses": {
+      "greeting": "Hi there! I'm Lucy, your virtual assistant for all things bodega cats.",
+      "findBodega": "You can find nearby bodegas by visiting our Explorer page where you can search by neighborhood or view our interactive map.",
+      "catOfTheDay": "Today's featured cat is Whiskers from Sunny Corner Deli in Brooklyn! Check out the Cats page to see more adorable bodega cats.",
+      "fundraiser": "We have several active fundraisers to help bodega cats! You can donate through our Fundraising page. 100% of proceeds go to spay/neuter and care programs.",
+      "passport": "The BodegaCat Passport is our rewards program! Visit bodegas, meet cats, and earn stamps. Collect enough to unlock special benefits and discounts."
+    },
+    "fallback": "I'm not sure how to help with that yet. Please try asking about bodegas, cats, fundraisers, or the passport program."
+  },
+  "feedback": {
+    "title": "Share Your Feedback",
+    "type": "Type of Feedback",
+    "message": "Your Message",
+    "placeholder": "Tell us what you think...",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "close": "Close feedback",
+    "suggestion": "Suggestion",
+    "bug": "Bug Report",
+    "question": "Question",
+    "other": "Other",
+    "thankYou": "Thank you for your feedback!",
+    "error": "There was an error submitting your feedback. Please try again."
+  },
+  "home": {
+    "hero": {
+      "title": "Discover NYC's Beloved Bodega Cats",
+      "subtitle": "Explore, Support, Connect",
+      "cta": "Get Started"
+    },
+    "features": {
+      "explore": {
+        "title": "Explore",
+        "description": "Discover bodega cats across New York City"
+      },
+      "support": {
+        "title": "Support",
+        "description": "Contribute to fundraisers helping cats in need"
+      },
+      "connect": {
+        "title": "Connect",
+        "description": "Join a community of bodega cat enthusiasts"
+      }
+    }
+  },
+  "bodegas": {
+    "search": "Search bodegas",
+    "filter": "Filter by",
+    "neighborhood": "Neighborhood",
+    "hasVisited": "Visited",
+    "sortBy": "Sort by",
+    "nearest": "Nearest",
+    "mostVisits": "Most Visits",
+    "recentActivity": "Recent Activity"
+  },
+  "cats": {
+    "search": "Search cats",
+    "filter": "Filter by",
+    "bodega": "Bodega",
+    "neighborhood": "Neighborhood",
+    "personality": "Personality"
+  },
+  "fundraising": {
+    "active": "Active Fundraisers",
+    "featured": "Featured",
+    "recent": "Recent",
+    "donate": "Donate",
+    "goal": "Goal",
+    "raised": "Raised",
+    "daysLeft": "Days Left"
+  },
+  "membership": {
+    "benefits": "Membership Benefits",
+    "tiers": "Membership Tiers",
+    "join": "Join Now",
+    "renewal": "Renewal Date"
+  },
+  "passport": {
+    "stamps": "Stamps Collected",
+    "achievements": "Achievements",
+    "nextReward": "Next Reward",
+    "scanQR": "Scan QR Code"
+  },
+  "profile": {
+    "edit": "Edit Profile",
+    "myVisits": "My Visits",
+    "myDonations": "My Donations",
+    "myAchievements": "My Achievements",
+    "settings": "Account Settings",
+    "deleteAccount": "Delete Account"
+  },
+  "auth": {
+    "login": "Log In",
+    "register": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "signUpNow": "Sign up now",
+    "loginNow": "Log in now"
+  },
+  "errors": {
+    "required": "This field is required",
+    "invalidEmail": "Please enter a valid email",
+    "passwordLength": "Password must be at least 8 characters",
+    "passwordMatch": "Passwords do not match",
+    "loginFailed": "Login failed. Please check your credentials.",
+    "registrationFailed": "Registration failed. Please try again.",
+    "networkError": "Network error. Please check your connection.",
+    "serverError": "Server error. Please try again later."
+  }
+}

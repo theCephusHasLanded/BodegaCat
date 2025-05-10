@@ -1,0 +1,156 @@
+.bodega-explorer-container {
+  padding: 2rem 0;
+}
+
+.neighborhood-filter {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.bodega-card {
+  transition: transform 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bodega-card:hover {
+  transform: translateY(-5px);
+}
+
+.bodega-card-image {
+  height: 180px;
+  object-fit: cover;
+}
+
+.bodega-card-placeholder {
+  height: 180px;
+  background-color: #6c757d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bodega-card-placeholder span {
+  font-size: 4rem;
+  color: white;
+}
+
+.bodega-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  color: #6c757d;
+}
+
+.cats-count, .visits-count {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #212529;
+}
+
+.bodega-detail-image {
+  height: 300px;
+  object-fit: cover;
+}
+
+.bodega-detail-placeholder {
+  height: 300px;
+  background-color: #6c757d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bodega-detail-placeholder span {
+  font-size: 6rem;
+  color: white;
+}
+
+.bodega-detail-meta {
+  display: flex;
+  align-items: center;
+}
+
+.rating-display {
+  display: flex;
+  align-items: center;
+}
+
+.rating-stars {
+  color: #ffc107;
+  margin-right: 0.5rem;
+}
+
+.rating-value {
+  color: #6c757d;
+}
+
+.bodega-description {
+  font-size: 1.1rem;
+  margin: 1.5rem 0;
+  white-space: pre-line;
+}
+
+.cat-card {
+  transition: transform 0.2s;
+}
+
+.cat-card:hover {
+  transform: scale(1.03);
+}
+
+.cat-image {
+  height: 200px;
+  object-fit: cover;
+}
+
+.cat-placeholder {
+  height: 200px;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat-placeholder span {
+  font-size: 4rem;
+}
+
+.visit-card {
+  transition: background-color 0.2s;
+}
+
+.visit-card:hover {
+  background-color: #f8f9fa;
+}
+
+.visit-user {
+  font-weight: bold;
+}
+
+.visit-date {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.visit-rating {
+  color: #ffc107;
+  font-size: 1.2rem;
+}
+
+.visit-review {
+  font-style: italic;
+}
+
+.rating-input {
+  font-size: 2rem;
+  color: #dee2e6;
+  cursor: pointer;
+}
+
+.rating-input .star {
+  margin-right: 0.5rem;
+}
+
+.rating-input .star.selected {
+  color: #ffc107;
+}
