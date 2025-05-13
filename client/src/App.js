@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { RegionProvider } from './context/RegionContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import ModernNavbar from './components/ModernNavbar';
 import Footer from './components/Footer';
@@ -12,11 +13,15 @@ import About from './pages/about/About';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Profile from './pages/profile/Profile';
+import ProfileEdit from './pages/profile/ProfileEdit';
 import Cats from './pages/cats/Cats';
 import Membership from './pages/membership/Membership';
 import Passport from './pages/passport/Passport';
 import Fundraising from './pages/fundraising/Fundraising';
 import BodegaExplorer from './pages/bodegas/BodegaExplorer';
+import ProductList from './pages/products/ProductList';
+import ProductDetail from './pages/products/ProductDetail';
+import ProductForm from './pages/products/ProductForm';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './i18n/i18n'; // Import i18n configuration
@@ -56,22 +61,25 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        {loading ? (
-          <MatrixLoading message="Connecting to NYC Bodega Network..." />
-        ) : (
-          <div className="app">
-            <ModernNavbar 
-              onChatbotToggle={handleChatbotToggle}
-              onFeedbackToggle={handleFeedbackToggle}
-              isChatbotOpen={showChatbot}
-              isFeedbackOpen={showFeedbackModal}
-            />
+        <RegionProvider>
+          {loading ? (
+            <MatrixLoading message="Connecting to NYC Bodega Network..." />
+          ) : (
+            <div className="app">
+              <ModernNavbar 
+                onChatbotToggle={handleChatbotToggle}
+                onFeedbackToggle={handleFeedbackToggle}
+                isChatbotOpen={showChatbot}
+                isFeedbackOpen={showFeedbackModal}
+              />
             <main className="main-content">
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                
+                {/* Profile Routes */}
                 <Route
                   path="/profile"
                   element={
@@ -80,6 +88,36 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
+                <Route
+                  path="/profile/edit"
+                  element={
+                    <ProtectedRoute>
+                      <ProfileEdit />
+                    </ProtectedRoute>
+                  }
+                />
+                
+                {/* Product Routes */}
+                <Route path="/products" element={<ProductList />} />
+                <Route path="/products/:id" element={<ProductDetail />} />
+                <Route
+                  path="/products/create"
+                  element={
+                    <ProtectedRoute>
+                      <ProductForm />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/products/edit/:id"
+                  element={
+                    <ProtectedRoute>
+                      <ProductForm />
+                    </ProtectedRoute>
+                  }
+                />
+                
+                {/* Other Routes */}
                 <Route
                   path="/cats"
                   element={
@@ -109,7 +147,8 @@ function App() {
               onClose={() => setShowFeedbackModal(false)}
             />
           </div>
-        )}
+          )}
+        </RegionProvider>
       </AuthProvider>
     </Router>
   );

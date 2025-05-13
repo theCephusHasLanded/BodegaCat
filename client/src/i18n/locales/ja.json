@@ -1,0 +1,149 @@
+{
+  "navbar": {
+    "home": "ホーム",
+    "about": "紹介",
+    "bodegas": "ボデガ",
+    "products": "商品",
+    "fundraising": "募金活動",
+    "membership": "会員制度",
+    "cats": "猫たち",
+    "passport": "パスポート",
+    "profile": "プロフィール",
+    "login": "ログイン",
+    "register": "登録",
+    "logout": "ログアウト",
+    "lightMode": "ライトモードに切り替え",
+    "darkMode": "ダークモードに切り替え",
+    "feedback": "フィードバック",
+    "chatbot": "ルーシーとチャット",
+    "closeMenu": "メニューを閉じる",
+    "openMenu": "メニューを開く"
+  },
+  "chatbot": {
+    "greeting": "こんにちは{{username}}さん！ボデガキャットの仮想アシスタント、ルーシーです。",
+    "help": "今日はNYCのボデガ猫の世界についてどのようにお手伝いできますか？",
+    "guest": "そこにいる方",
+    "placeholder": "メッセージを入力...",
+    "inputLabel": "ルーシーへのメッセージ",
+    "send": "メッセージを送信",
+    "close": "チャットを閉じる",
+    "suggestions": {
+      "findBodega": "近くのボデガを探す",
+      "catOfTheDay": "今日の猫を見せて",
+      "fundraiser": "寄付する方法は？",
+      "passport": "パスポートについて教えて"
+    },
+    "responses": {
+      "greeting": "こんにちは！ボデガ猫に関するすべてのことについてのバーチャルアシスタント、ルーシーです。",
+      "findBodega": "エクスプローラーページで近くのボデガを見つけることができます。地区で検索したり、インタラクティブマップを見ることができます。",
+      "catOfTheDay": "今日の注目猫はブルックリンのサニーコーナーデリのウィスカーズです！「猫たち」ページでもっと可愛いボデガ猫を見てください。",
+      "fundraiser": "ボデガ猫を助けるためのアクティブな募金活動がいくつかあります！募金活動ページから寄付できます。収益の100％は去勢・避妊や世話のプログラムに使われます。",
+      "passport": "ボデガキャットパスポートは私たちの報酬プログラムです！ボデガを訪問し、猫に会い、スタンプを集めましょう。特典や割引を解除するために十分に集めてください。"
+    },
+    "fallback": "それについてはまだ助けられる方法がわかりません。ボデガ、猫、募金活動、またはパスポートプログラムについて質問してみてください。"
+  },
+  "feedback": {
+    "title": "フィードバックを共有",
+    "type": "フィードバックの種類",
+    "message": "メッセージ",
+    "placeholder": "あなたの考えを教えてください...",
+    "submit": "送信",
+    "cancel": "キャンセル",
+    "close": "フィードバックを閉じる",
+    "suggestion": "提案",
+    "bug": "バグ報告",
+    "question": "質問",
+    "other": "その他",
+    "thankYou": "フィードバックありがとうございます！",
+    "error": "フィードバックの送信中にエラーが発生しました。もう一度お試しください。"
+  },
+  "home": {
+    "hero": {
+      "title": "NYCの愛されるボデガ猫を発見しよう",
+      "subtitle": "探索、支援、繋がり",
+      "cta": "始める"
+    },
+    "features": {
+      "explore": {
+        "title": "探索",
+        "description": "ニューヨーク市全体のボデガ猫を発見しよう"
+      },
+      "support": {
+        "title": "支援",
+        "description": "困っている猫を助ける募金活動に貢献する"
+      },
+      "connect": {
+        "title": "繋がり",
+        "description": "ボデガ猫愛好家のコミュニティに参加する"
+      }
+    }
+  },
+  "bodegas": {
+    "search": "ボデガを検索",
+    "filter": "フィルター",
+    "neighborhood": "地区",
+    "hasVisited": "訪問済み",
+    "sortBy": "並び替え",
+    "nearest": "最も近い",
+    "mostVisits": "訪問数が多い",
+    "recentActivity": "最近の活動"
+  },
+  "cats": {
+    "search": "猫を検索",
+    "filter": "フィルター",
+    "bodega": "ボデガ",
+    "neighborhood": "地区",
+    "personality": "性格"
+  },
+  "fundraising": {
+    "active": "アクティブな募金活動",
+    "featured": "注目",
+    "recent": "最近",
+    "donate": "寄付",
+    "goal": "目標",
+    "raised": "集まった金額",
+    "daysLeft": "残り日数"
+  },
+  "membership": {
+    "benefits": "会員特典",
+    "tiers": "会員レベル",
+    "join": "今すぐ参加",
+    "renewal": "更新日"
+  },
+  "passport": {
+    "stamps": "収集したスタンプ",
+    "achievements": "達成",
+    "nextReward": "次の報酬",
+    "scanQR": "QRコードをスキャン"
+  },
+  "profile": {
+    "edit": "プロフィール編集",
+    "myVisits": "訪問履歴",
+    "myDonations": "寄付履歴",
+    "myAchievements": "達成した成果",
+    "settings": "アカウント設定",
+    "deleteAccount": "アカウント削除"
+  },
+  "auth": {
+    "login": "ログイン",
+    "register": "登録",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "confirmPassword": "パスワード確認",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "noAccount": "アカウントをお持ちでないですか？",
+    "haveAccount": "すでにアカウントをお持ちですか？",
+    "signUpNow": "今すぐ登録",
+    "loginNow": "今すぐログイン"
+  },
+  "errors": {
+    "required": "このフィールドは必須です",
+    "invalidEmail": "有効なメールアドレスを入力してください",
+    "passwordLength": "パスワードは8文字以上である必要があります",
+    "passwordMatch": "パスワードが一致しません",
+    "loginFailed": "ログインに失敗しました。認証情報を確認してください。",
+    "registrationFailed": "登録に失敗しました。もう一度お試しください。",
+    "networkError": "ネットワークエラー。接続を確認してください。",
+    "serverError": "サーバーエラー。後でもう一度お試しください。"
+  }
+}

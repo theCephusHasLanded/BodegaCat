@@ -1,0 +1,149 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "Chi siamo",
+    "bodegas": "Bodegas",
+    "products": "Prodotti",
+    "fundraising": "Raccolta fondi",
+    "membership": "Abbonamento",
+    "cats": "Gatti",
+    "passport": "Passaporto",
+    "profile": "Profilo",
+    "login": "Accedi",
+    "register": "Registrati",
+    "logout": "Esci",
+    "lightMode": "Passa alla modalità chiara",
+    "darkMode": "Passa alla modalità scura",
+    "feedback": "Invia feedback",
+    "chatbot": "Chatta con Lucy",
+    "closeMenu": "Chiudi menu",
+    "openMenu": "Apri menu"
+  },
+  "chatbot": {
+    "greeting": "Ciao {{username}}! Sono Lucy, la tua assistente virtuale BodegaCat.",
+    "help": "Come posso aiutarti a scoprire il mondo dei gatti delle bodega di NYC oggi?",
+    "guest": "amico",
+    "placeholder": "Scrivi il tuo messaggio...",
+    "inputLabel": "Messaggio per Lucy",
+    "send": "Invia messaggio",
+    "close": "Chiudi chat",
+    "suggestions": {
+      "findBodega": "Trova una bodega vicino a me",
+      "catOfTheDay": "Mostrami il gatto del giorno",
+      "fundraiser": "Come posso donare?",
+      "passport": "Parlami del passaporto"
+    },
+    "responses": {
+      "greeting": "Ciao! Sono Lucy, la tua assistente virtuale per tutto ciò che riguarda i gatti delle bodega.",
+      "findBodega": "Puoi trovare bodega nelle vicinanze visitando la nostra pagina Explorer dove puoi cercare per quartiere o visualizzare la nostra mappa interattiva.",
+      "catOfTheDay": "Il gatto in evidenza oggi è Whiskers del Sunny Corner Deli a Brooklyn! Visita la pagina Gatti per vedere altri adorabili gatti delle bodega.",
+      "fundraiser": "Abbiamo diverse raccolte fondi attive per aiutare i gatti delle bodega! Puoi donare attraverso la nostra pagina di Raccolta fondi. Il 100% dei proventi va ai programmi di sterilizzazione e assistenza.",
+      "passport": "Il Passaporto BodegaCat è il nostro programma di ricompense! Visita le bodega, incontra i gatti e guadagna timbri. Raccogline abbastanza per sbloccare vantaggi speciali e sconti."
+    },
+    "fallback": "Non sono ancora sicura di come aiutarti con questo. Prova a chiedere informazioni su bodega, gatti, raccolte fondi o il programma passaporto."
+  },
+  "feedback": {
+    "title": "Condividi il tuo feedback",
+    "type": "Tipo di feedback",
+    "message": "Il tuo messaggio",
+    "placeholder": "Dicci cosa ne pensi...",
+    "submit": "Invia",
+    "cancel": "Annulla",
+    "close": "Chiudi feedback",
+    "suggestion": "Suggerimento",
+    "bug": "Segnalazione bug",
+    "question": "Domanda",
+    "other": "Altro",
+    "thankYou": "Grazie per il tuo feedback!",
+    "error": "Si è verificato un errore durante l'invio del feedback. Riprova."
+  },
+  "home": {
+    "hero": {
+      "title": "Scopri gli amati gatti delle bodega di NYC",
+      "subtitle": "Esplora, Sostieni, Connettiti",
+      "cta": "Inizia"
+    },
+    "features": {
+      "explore": {
+        "title": "Esplora",
+        "description": "Scopri i gatti delle bodega in tutta New York City"
+      },
+      "support": {
+        "title": "Sostieni",
+        "description": "Contribuisci alle raccolte fondi che aiutano i gatti bisognosi"
+      },
+      "connect": {
+        "title": "Connettiti",
+        "description": "Unisciti a una comunità di appassionati di gatti delle bodega"
+      }
+    }
+  },
+  "bodegas": {
+    "search": "Cerca bodega",
+    "filter": "Filtra per",
+    "neighborhood": "Quartiere",
+    "hasVisited": "Visitato",
+    "sortBy": "Ordina per",
+    "nearest": "Più vicino",
+    "mostVisits": "Più visite",
+    "recentActivity": "Attività recente"
+  },
+  "cats": {
+    "search": "Cerca gatti",
+    "filter": "Filtra per",
+    "bodega": "Bodega",
+    "neighborhood": "Quartiere",
+    "personality": "Personalità"
+  },
+  "fundraising": {
+    "active": "Raccolte fondi attive",
+    "featured": "In evidenza",
+    "recent": "Recenti",
+    "donate": "Dona",
+    "goal": "Obiettivo",
+    "raised": "Raccolto",
+    "daysLeft": "Giorni rimasti"
+  },
+  "membership": {
+    "benefits": "Vantaggi dell'abbonamento",
+    "tiers": "Livelli di abbonamento",
+    "join": "Iscriviti ora",
+    "renewal": "Data di rinnovo"
+  },
+  "passport": {
+    "stamps": "Timbri raccolti",
+    "achievements": "Risultati",
+    "nextReward": "Prossimo premio",
+    "scanQR": "Scansiona codice QR"
+  },
+  "profile": {
+    "edit": "Modifica profilo",
+    "myVisits": "Le mie visite",
+    "myDonations": "Le mie donazioni",
+    "myAchievements": "I miei risultati",
+    "settings": "Impostazioni account",
+    "deleteAccount": "Elimina account"
+  },
+  "auth": {
+    "login": "Accedi",
+    "register": "Registrati",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Conferma password",
+    "forgotPassword": "Password dimenticata?",
+    "noAccount": "Non hai un account?",
+    "haveAccount": "Hai già un account?",
+    "signUpNow": "Registrati ora",
+    "loginNow": "Accedi ora"
+  },
+  "errors": {
+    "required": "Questo campo è obbligatorio",
+    "invalidEmail": "Inserisci un'email valida",
+    "passwordLength": "La password deve contenere almeno 8 caratteri",
+    "passwordMatch": "Le password non corrispondono",
+    "loginFailed": "Accesso fallito. Controlla le tue credenziali.",
+    "registrationFailed": "Registrazione fallita. Riprova.",
+    "networkError": "Errore di rete. Controlla la tua connessione.",
+    "serverError": "Errore del server. Riprova più tardi."
+  }
+}

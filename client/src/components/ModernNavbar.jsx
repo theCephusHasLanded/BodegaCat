@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useRegion } from '../context/RegionContext';
 import { useTranslation } from 'react-i18next';
+import RegionSelector from './RegionSelector';
 import './ModernNavbar.css';
 
 // Language selector component
@@ -12,7 +14,12 @@ const LanguageSelector = () => {
   
   const languages = [
     { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'es', name: 'Español', flag: '🇪🇸' }
+    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+    { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+    { code: 'ja', name: '日本語', flag: '🇯🇵' }
   ];
 
   useEffect(() => {
@@ -118,6 +125,7 @@ const ModernNavbar = ({
     { path: '/', label: t('navbar.home') },
     { path: '/about', label: t('navbar.about') },
     { path: '/bodegas', label: t('navbar.bodegas') },
+    { path: '/products', label: t('navbar.products') },
     { path: '/fundraising', label: t('navbar.fundraising') },
     { path: '/membership', label: t('navbar.membership') },
   ];
@@ -179,6 +187,8 @@ const ModernNavbar = ({
           </div>
 
           <div className="navbar-controls">
+            <RegionSelector minimal={true} />
+            
             <LanguageSelector />
             
             <button 
