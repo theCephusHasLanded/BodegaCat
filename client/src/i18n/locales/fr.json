@@ -1,0 +1,149 @@
+{
+  "navbar": {
+    "home": "Accueil",
+    "about": "À propos",
+    "bodegas": "Bodegas",
+    "products": "Produits",
+    "fundraising": "Collecte de fonds",
+    "membership": "Adhésion",
+    "cats": "Chats",
+    "passport": "Passeport",
+    "profile": "Profil",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "logout": "Déconnexion",
+    "lightMode": "Passer en mode clair",
+    "darkMode": "Passer en mode sombre",
+    "feedback": "Donner un avis",
+    "chatbot": "Discuter avec Lucy",
+    "closeMenu": "Fermer le menu",
+    "openMenu": "Ouvrir le menu"
+  },
+  "chatbot": {
+    "greeting": "Bonjour {{username}} ! Je suis Lucy, votre assistante virtuelle BodegaCat.",
+    "help": "Comment puis-je vous aider à découvrir le monde des chats de bodega de NYC aujourd'hui ?",
+    "guest": "là",
+    "placeholder": "Écrivez votre message...",
+    "inputLabel": "Message pour Lucy",
+    "send": "Envoyer le message",
+    "close": "Fermer le chat",
+    "suggestions": {
+      "findBodega": "Trouver une bodega près de chez moi",
+      "catOfTheDay": "Montrez-moi le chat du jour",
+      "fundraiser": "Comment puis-je faire un don ?",
+      "passport": "Parlez-moi du passeport"
+    },
+    "responses": {
+      "greeting": "Bonjour ! Je suis Lucy, votre assistante virtuelle pour tout ce qui concerne les chats de bodega.",
+      "findBodega": "Vous pouvez trouver des bodegas à proximité en visitant notre page Explorateur où vous pouvez rechercher par quartier ou consulter notre carte interactive.",
+      "catOfTheDay": "Le chat en vedette aujourd'hui est Whiskers de Sunny Corner Deli à Brooklyn ! Consultez la page Chats pour voir plus d'adorables chats de bodega.",
+      "fundraiser": "Nous avons plusieurs collectes de fonds actives pour aider les chats de bodega ! Vous pouvez faire un don via notre page de Collecte de fonds. 100% des recettes sont destinées aux programmes de stérilisation et de soins.",
+      "passport": "Le Passeport BodegaCat est notre programme de récompenses ! Visitez des bodegas, rencontrez des chats et gagnez des tampons. Collectionnez-en suffisamment pour débloquer des avantages spéciaux et des réductions."
+    },
+    "fallback": "Je ne sais pas encore comment vous aider avec ça. Veuillez essayer de poser des questions sur les bodegas, les chats, les collectes de fonds ou le programme de passeport."
+  },
+  "feedback": {
+    "title": "Partagez votre avis",
+    "type": "Type de commentaire",
+    "message": "Votre message",
+    "placeholder": "Dites-nous ce que vous pensez...",
+    "submit": "Soumettre",
+    "cancel": "Annuler",
+    "close": "Fermer les commentaires",
+    "suggestion": "Suggestion",
+    "bug": "Signalement de bug",
+    "question": "Question",
+    "other": "Autre",
+    "thankYou": "Merci pour votre retour !",
+    "error": "Une erreur s'est produite lors de l'envoi de votre commentaire. Veuillez réessayer."
+  },
+  "home": {
+    "hero": {
+      "title": "Découvrez les chats de bodega bien-aimés de NYC",
+      "subtitle": "Explorez, Soutenez, Connectez",
+      "cta": "Commencer"
+    },
+    "features": {
+      "explore": {
+        "title": "Explorer",
+        "description": "Découvrez les chats de bodega dans toute la ville de New York"
+      },
+      "support": {
+        "title": "Soutenir",
+        "description": "Contribuez aux collectes de fonds aidant les chats dans le besoin"
+      },
+      "connect": {
+        "title": "Connecter",
+        "description": "Rejoignez une communauté d'amateurs de chats de bodega"
+      }
+    }
+  },
+  "bodegas": {
+    "search": "Rechercher des bodegas",
+    "filter": "Filtrer par",
+    "neighborhood": "Quartier",
+    "hasVisited": "Visité",
+    "sortBy": "Trier par",
+    "nearest": "Plus proche",
+    "mostVisits": "Plus de visites",
+    "recentActivity": "Activité récente"
+  },
+  "cats": {
+    "search": "Rechercher des chats",
+    "filter": "Filtrer par",
+    "bodega": "Bodega",
+    "neighborhood": "Quartier",
+    "personality": "Personnalité"
+  },
+  "fundraising": {
+    "active": "Collectes de fonds actives",
+    "featured": "En vedette",
+    "recent": "Récentes",
+    "donate": "Faire un don",
+    "goal": "Objectif",
+    "raised": "Collecté",
+    "daysLeft": "Jours restants"
+  },
+  "membership": {
+    "benefits": "Avantages d'adhésion",
+    "tiers": "Niveaux d'adhésion",
+    "join": "Rejoindre maintenant",
+    "renewal": "Date de renouvellement"
+  },
+  "passport": {
+    "stamps": "Tampons collectés",
+    "achievements": "Réalisations",
+    "nextReward": "Prochaine récompense",
+    "scanQR": "Scanner le code QR"
+  },
+  "profile": {
+    "edit": "Modifier le profil",
+    "myVisits": "Mes visites",
+    "myDonations": "Mes dons",
+    "myAchievements": "Mes réalisations",
+    "settings": "Paramètres du compte",
+    "deleteAccount": "Supprimer le compte"
+  },
+  "auth": {
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "email": "Email",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "forgotPassword": "Mot de passe oublié ?",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "haveAccount": "Vous avez déjà un compte ?",
+    "signUpNow": "S'inscrire maintenant",
+    "loginNow": "Se connecter maintenant"
+  },
+  "errors": {
+    "required": "Ce champ est obligatoire",
+    "invalidEmail": "Veuillez entrer un email valide",
+    "passwordLength": "Le mot de passe doit comporter au moins 8 caractères",
+    "passwordMatch": "Les mots de passe ne correspondent pas",
+    "loginFailed": "Échec de la connexion. Veuillez vérifier vos identifiants.",
+    "registrationFailed": "Échec de l'inscription. Veuillez réessayer.",
+    "networkError": "Erreur réseau. Veuillez vérifier votre connexion.",
+    "serverError": "Erreur du serveur. Veuillez réessayer plus tard."
+  }
+}

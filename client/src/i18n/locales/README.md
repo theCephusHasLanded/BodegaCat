@@ -6,15 +6,21 @@ This directory contains translation files for the BodegaCat application.
 
 - English (`en.json`)
 - Spanish (`es.json`)
+- French (`fr.json`)
+- German (`de.json`)
+- Italian (`it.json`)
+- Russian (`ru.json`)
+- Japanese (`ja.json`)
 
 ## Adding More Languages
 
 To add support for additional languages:
 
-1. Create a new JSON file with the appropriate language code (e.g., `fr.json` for French)
+1. Create a new JSON file with the appropriate language code (e.g., `zh.json` for Chinese)
 2. Copy the structure from an existing language file
 3. Translate all the values while keeping the keys unchanged
 4. Update the i18n.js file to import and include the new language
+5. Add the language to the `languages` array in the LanguageSelector component in ModernNavbar.jsx
 
 ## Language Code Reference
 

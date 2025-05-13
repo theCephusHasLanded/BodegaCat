@@ -1,103 +1,364 @@
 .profile-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - 80px);
-  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
   background-color: #f8f9fa;
+}
+
+.profile-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #eee;
+}
+
+.profile-intro {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #4C9F70;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.profile-name h1 {
+  margin: 0 0 5px;
+  font-size: 28px;
+  color: #333;
+}
+
+.member-since {
+  margin: 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.edit-profile-btn, .logout-btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-profile-btn {
+  background-color: #4C9F70;
+  color: white;
+  border: none;
+}
+
+.edit-profile-btn:hover {
+  background-color: #3b8a5e;
+}
+
+.logout-btn {
+  background-color: transparent;
+  color: #d32f2f;
+  border: 1px solid #d32f2f;
+}
+
+.logout-btn:hover {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.profile-content {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 30px;
+}
+
+.profile-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.profile-main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .profile-card {
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  width: 100%;
-  max-width: 600px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  height: fit-content;
 }
 
-.profile-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #eee;
-}
-
-.profile-header h2 {
+.profile-card h2 {
+  margin: 0 0 20px;
   color: #333;
-  margin: 0;
-}
-
-.logout-button {
-  background-color: transparent;
-  color: #d32f2f;
-  border: 1px solid #d32f2f;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.logout-button:hover {
-  background-color: #d32f2f;
-  color: white;
-}
-
-.profile-info {
-  margin-bottom: 24px;
+  font-size: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
 }
 
 .info-group {
-  margin-bottom: 16px;
+  margin-bottom: 15px;
 }
 
 .info-group label {
   display: block;
   font-size: 14px;
   color: #666;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
+  font-weight: 500;
 }
 
 .info-group p {
+  margin: 0;
   font-size: 16px;
   color: #333;
-  margin: 0;
   padding: 8px 0;
 }
 
-.info-row {
+.stats-group {
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
-.info-row .info-group {
-  flex: 1;
+.stat-item {
+  text-align: center;
 }
 
-.profile-actions {
+.stat-value {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  color: #4C9F70;
+  margin-bottom: 5px;
+}
+
+.stat-item label {
+  font-size: 14px;
+  color: #666;
+}
+
+.view-all-link {
+  display: inline-block;
+  color: #4C9F70;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.view-all-link:hover {
+  text-decoration: underline;
+}
+
+.card-header {
   display: flex;
-  justify-content: flex-end;
-  padding-top: 16px;
-  border-top: 1px solid #eee;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
 }
 
-.edit-button {
-  background-color: #4a90e2;
+.card-header h2 {
+  margin: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 30px 0;
+  color: #666;
+}
+
+.action-btn {
+  display: inline-block;
+  background-color: #4C9F70;
   color: white;
-  border: none;
+  text-decoration: none;
   padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
+  border-radius: 6px;
+  margin-top: 15px;
+  font-weight: 500;
   transition: background-color 0.3s;
 }
 
-.edit-button:hover {
-  background-color: #3a7bc8;
+.action-btn:hover {
+  background-color: #3b8a5e;
 }
 
-@media (max-width: 576px) {
+.orders-list, .visits-list, .achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.order-item, .visit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.order-item:hover, .visit-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.order-info, .visit-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-date, .visit-date {
+  color: #777;
+  font-size: 14px;
+}
+
+.order-id {
+  font-weight: 600;
+  color: #333;
+  margin: 5px 0;
+}
+
+.order-status {
+  color: #4caf50;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.order-total {
+  font-weight: 700;
+  font-size: 18px;
+  color: #333;
+}
+
+.visit-bodega {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.visit-cat {
+  color: #666;
+  font-size: 14px;
+}
+
+.cat-name {
+  font-weight: 600;
+  color: #4C9F70;
+}
+
+.view-details-link {
+  color: #4C9F70;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.view-details-link:hover {
+  text-decoration: underline;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.achievement-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.achievement-badge {
+  font-size: 24px;
+}
+
+.achievement-info {
+  flex: 1;
+}
+
+.achievement-name {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.achievement-description {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.achievement-date {
+  color: #777;
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .profile-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .profile-header-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .profile-actions {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .edit-profile-btn, .logout-btn {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .order-item, .visit-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .order-total {
+    margin-left: auto;
+  }
+  
+  .view-details-link {
+    align-self: flex-end;
+  }
+  
   .info-row {
     flex-direction: column;
     gap: 0;

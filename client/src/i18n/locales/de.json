@@ -1,0 +1,149 @@
+{
+  "navbar": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "bodegas": "Bodegas",
+    "products": "Produkte",
+    "fundraising": "Spendensammlung",
+    "membership": "Mitgliedschaft",
+    "cats": "Katzen",
+    "passport": "Reisepass",
+    "profile": "Profil",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "logout": "Abmelden",
+    "lightMode": "Zum hellen Modus wechseln",
+    "darkMode": "Zum dunklen Modus wechseln",
+    "feedback": "Feedback geben",
+    "chatbot": "Mit Lucy chatten",
+    "closeMenu": "Menü schließen",
+    "openMenu": "Menü öffnen"
+  },
+  "chatbot": {
+    "greeting": "Hallo {{username}}! Ich bin Lucy, deine BodegaCat virtuelle Assistentin.",
+    "help": "Wie kann ich dir helfen, die Welt der NYC Bodega-Katzen heute zu entdecken?",
+    "guest": "dort",
+    "placeholder": "Schreibe deine Nachricht...",
+    "inputLabel": "Nachricht an Lucy",
+    "send": "Nachricht senden",
+    "close": "Chat schließen",
+    "suggestions": {
+      "findBodega": "Finde eine Bodega in meiner Nähe",
+      "catOfTheDay": "Zeig mir die Katze des Tages",
+      "fundraiser": "Wie kann ich spenden?",
+      "passport": "Erzähl mir vom Reisepass"
+    },
+    "responses": {
+      "greeting": "Hallo! Ich bin Lucy, deine virtuelle Assistentin für alles rund um Bodega-Katzen.",
+      "findBodega": "Du kannst Bodegas in deiner Nähe auf unserer Explorer-Seite finden, wo du nach Stadtvierteln suchen oder unsere interaktive Karte ansehen kannst.",
+      "catOfTheDay": "Die heutige ausgewählte Katze ist Whiskers vom Sunny Corner Deli in Brooklyn! Schau dir die Katzen-Seite an, um mehr entzückende Bodega-Katzen zu sehen.",
+      "fundraiser": "Wir haben mehrere aktive Spendenaktionen, um Bodega-Katzen zu helfen! Du kannst über unsere Spendensammlungsseite spenden. 100% der Einnahmen gehen an Kastrations- und Pflegeprogramme.",
+      "passport": "Der BodegaCat Reisepass ist unser Belohnungsprogramm! Besuche Bodegas, triff Katzen und sammle Stempel. Sammle genug, um spezielle Vorteile und Rabatte freizuschalten."
+    },
+    "fallback": "Ich bin mir noch nicht sicher, wie ich dabei helfen kann. Bitte versuche es mit Fragen zu Bodegas, Katzen, Spendenaktionen oder dem Reisepassprogramm."
+  },
+  "feedback": {
+    "title": "Teile dein Feedback",
+    "type": "Art des Feedbacks",
+    "message": "Deine Nachricht",
+    "placeholder": "Sag uns, was du denkst...",
+    "submit": "Absenden",
+    "cancel": "Abbrechen",
+    "close": "Feedback schließen",
+    "suggestion": "Vorschlag",
+    "bug": "Fehlerbericht",
+    "question": "Frage",
+    "other": "Anderes",
+    "thankYou": "Vielen Dank für dein Feedback!",
+    "error": "Beim Absenden deines Feedbacks ist ein Fehler aufgetreten. Bitte versuche es erneut."
+  },
+  "home": {
+    "hero": {
+      "title": "Entdecke NYCs geliebte Bodega-Katzen",
+      "subtitle": "Erkunden, Unterstützen, Verbinden",
+      "cta": "Loslegen"
+    },
+    "features": {
+      "explore": {
+        "title": "Erkunden",
+        "description": "Entdecke Bodega-Katzen in der ganzen Stadt New York"
+      },
+      "support": {
+        "title": "Unterstützen",
+        "description": "Trage zu Spendenaktionen bei, die Katzen in Not helfen"
+      },
+      "connect": {
+        "title": "Verbinden",
+        "description": "Tritt einer Gemeinschaft von Bodega-Katzen-Enthusiasten bei"
+      }
+    }
+  },
+  "bodegas": {
+    "search": "Bodegas suchen",
+    "filter": "Filtern nach",
+    "neighborhood": "Stadtviertel",
+    "hasVisited": "Besucht",
+    "sortBy": "Sortieren nach",
+    "nearest": "Nächstgelegen",
+    "mostVisits": "Meiste Besuche",
+    "recentActivity": "Neueste Aktivität"
+  },
+  "cats": {
+    "search": "Katzen suchen",
+    "filter": "Filtern nach",
+    "bodega": "Bodega",
+    "neighborhood": "Stadtviertel",
+    "personality": "Persönlichkeit"
+  },
+  "fundraising": {
+    "active": "Aktive Spendenaktionen",
+    "featured": "Empfohlen",
+    "recent": "Kürzlich",
+    "donate": "Spenden",
+    "goal": "Ziel",
+    "raised": "Gesammelt",
+    "daysLeft": "Verbleibende Tage"
+  },
+  "membership": {
+    "benefits": "Mitgliedschaftsvorteile",
+    "tiers": "Mitgliedschaftsstufen",
+    "join": "Jetzt beitreten",
+    "renewal": "Verlängerungsdatum"
+  },
+  "passport": {
+    "stamps": "Gesammelte Stempel",
+    "achievements": "Erfolge",
+    "nextReward": "Nächste Belohnung",
+    "scanQR": "QR-Code scannen"
+  },
+  "profile": {
+    "edit": "Profil bearbeiten",
+    "myVisits": "Meine Besuche",
+    "myDonations": "Meine Spenden",
+    "myAchievements": "Meine Erfolge",
+    "settings": "Kontoeinstellungen",
+    "deleteAccount": "Konto löschen"
+  },
+  "auth": {
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "forgotPassword": "Passwort vergessen?",
+    "noAccount": "Noch kein Konto?",
+    "haveAccount": "Bereits ein Konto?",
+    "signUpNow": "Jetzt registrieren",
+    "loginNow": "Jetzt anmelden"
+  },
+  "errors": {
+    "required": "Dieses Feld ist erforderlich",
+    "invalidEmail": "Bitte gib eine gültige E-Mail-Adresse ein",
+    "passwordLength": "Das Passwort muss mindestens 8 Zeichen lang sein",
+    "passwordMatch": "Die Passwörter stimmen nicht überein",
+    "loginFailed": "Anmeldung fehlgeschlagen. Bitte überprüfe deine Anmeldedaten.",
+    "registrationFailed": "Registrierung fehlgeschlagen. Bitte versuche es erneut.",
+    "networkError": "Netzwerkfehler. Bitte überprüfe deine Verbindung.",
+    "serverError": "Serverfehler. Bitte versuche es später noch einmal."
+  }
+}
